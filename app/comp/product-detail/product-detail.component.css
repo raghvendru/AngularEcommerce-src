@@ -86,7 +86,7 @@ body {
     font-weight: bold; }
   
   .checked, .price span {
-    color: #ff9f1a; }
+    color:black; }
   
   .product-title, .rating, .product-description, .price, .vote, .sizes {
     margin-bottom: 15px; }
@@ -110,7 +110,7 @@ body {
       margin-left: 20px; }
   
   .add-to-cart, .like {
-    background: #ff9f1a;
+    background: #E06C9F;
     padding: 1.2em 1.5em;
     border: none;
     text-transform: UPPERCASE;

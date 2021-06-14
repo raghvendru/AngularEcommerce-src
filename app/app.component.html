@@ -1,4 +1,65 @@
-<!-- Nav bar should be here  -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav" >
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown" *ngFor="let item of menu ;  let i = index  ">
+        <!-- <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span> -->
+          
+<a [routerLink]="['/productlist', item.CategoryID]">{{item.Name}} </a>
+      
+
+        <!-- <ul class="dropdown-menu">
+          <li><a href="#">Mobiles</a></li>
+          <li><a href="#">Laptops</a></li>
+          <li><a href="#">Pendrives</a></li>
+        </ul> -->
+      </li>
+      <!-- <li class="dropdown"><p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">Groceries <span class="caret"></span>
+      </p>
+        <ul class="dropdown-menu">
+          <li><a href="#">Vegetables</a></li>
+          <li><a href="#">Fruits</a></li>
+          <li><a href="#">Dry Fruits</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">Women <span class="caret"></span>
+      </p>
+        <ul class="dropdown-menu">
+          <li><a href="#">Sarees</a></li>
+          <li><a href="#">Kurthis</a></li>
+          <li><a href="#">Maxis</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">Men <span class="caret"></span>
+      </p>
+        <ul class="dropdown-menu">
+          <li><a href="#">Jeans</a></li>
+          <li><a href="#">Shirts</a></li>
+          <li><a href="#">T-shirts</a></li>
+        </ul>
+      </li>
+     -->
+    </ul>
+    <div class="search-container" style="float: right; margin-top: 10px;">
+      <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 1px; font-size: 30px;float: right;"></i>
+      <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 1px; font-size: 30px;float:right;"></i>
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" style="margin-right: 10px;"><i class="fa fa-search"></i></button>
+
+  </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+  
+  </div>
+ 
+</nav>
 
 <router-outlet></router-outlet>
-<!-- footer should be kept here -->
+
+<div class="footer" style="height: 20px;">
+  <p>About Us</p>
+</div>

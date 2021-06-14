@@ -16,7 +16,7 @@ body{
     transform: translate(-50%,-50%);
 }
 h1{
-    color: #ff9800;
+    color: rgb(28, 35, 100);
     font-family: cursive;
     text-align: center;
     padding: 20px 0;
@@ -29,7 +29,7 @@ input{
     margin: 5px 0;
     outline: none;
     padding: 7px;
-    background: #1f3158;
+    background: white;
     border: 1px solid #184c9a;
     font-size: 17px;
     color: #fff;
@@ -44,27 +44,13 @@ button{
     margin: 5px 0;
     padding: 8px;
     font-size: 18px;
-    background:linear-gradient(to right, #2b6fa5,#0de4ff);
+    background:#E06C9F;
     color: #fff;
     border: 1px solid #184c9a;
     border-radius: 5px;
     cursor: pointer;
 }
 button:hover{
-    background:linear-gradient(to left, #2b6fa5,#0de4ff);
+    background:#E06C9F;
     
-}
-
-/*youtube link*/
-a{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color:#f00;
-  background-color: #fff;
-  padding: 10px;
-  font-weight: bold;
-  border-radius: 20px;
-  text-decoration:none;
-  font-family:cursive;
 }

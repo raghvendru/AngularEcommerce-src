@@ -136,5 +136,13 @@
     border: 1px solid #E06C9F;
     color: #E06C9F;
   }
+
+  .image-bg {
+    background-position: center center;
+    background-size: cover;
+    flex: 0 0 auto;
+    margin: 5px;
+    width: calc(40% - 10px);
+  }
   
   
