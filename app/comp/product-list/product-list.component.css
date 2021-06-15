@@ -21,6 +21,10 @@
   
   .dress-card-title {
     line-height: 0.5rem;
+    white-space: nowrap;
+    margin-bottom: 0.2rem;
+    font-size: 1.0rem;
+    margin-bottom: 0rem;
   }
   
   .dress-card-crossed {
@@ -145,4 +149,7 @@
     width: calc(40% - 10px);
   }
   
-  
+  /* div {
+    white-space: normal;
+  } */
+

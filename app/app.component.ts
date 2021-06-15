@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from './service/category.service';
 
 @Component({
@@ -10,16 +11,19 @@ import { CategoryService } from './service/category.service';
 export class AppComponent implements OnInit {
 
 
-
   title = 'shopping';
-public menu:Array<any>=[];
+  public menu:Array<any>=[];
+  public selectedItem = null;
 
   ngOnInit(): void {
     this.getMenu();
+    this.back();
   }
 
-  constructor( private categoryService:CategoryService) {
-  }
+  constructor(private categoryService:CategoryService,private _Activatedroute:ActivatedRoute,
+    private _router:Router){
+      
+    }
 
   getMenu(){
     this.categoryService.getMenu().subscribe(
@@ -36,5 +40,7 @@ public menu:Array<any>=[];
 
   }
 
-  
+  back() {
+    this._router.navigate(['/landing']);
+  }
 }

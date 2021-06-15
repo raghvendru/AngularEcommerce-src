@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,15 +18,13 @@ export class ProductListComponent implements OnInit {
 
   public id:any;
   public sub: Subscription = new Subscription ;
+  public selectedItem = null;
 
   constructor(private productListSrv:ProductListService,private _Activatedroute:ActivatedRoute,
     private _router:Router) {
     
    }
 
-  
-
- 
    ngOnInit() {
  
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
@@ -35,8 +34,6 @@ export class ProductListComponent implements OnInit {
     });
     this.getData(this.id);
   }
-
- 
 
   // getProductList(paramsObject:any){
   //   this.productListSrv.getProductList(paramsObject).subscribe(
@@ -53,7 +50,7 @@ export class ProductListComponent implements OnInit {
   // }
 
   getData(catid:number) {
-    console.log("hii");
+    // console.log("hii");
     let param:any= {} ;
     param['sub_cat_id'] = catid;
     param['pageNum'] = this.pageNum ;
@@ -74,4 +71,12 @@ export class ProductListComponent implements OnInit {
   }
 
 
+  onClickItem(item: any){
+    this.selectedItem = item;
+    // console.log(this.selectedItem);
+    // this._router.navigate(['productdetail', this.selectedItem]);
+    // this._router.navigate(['productdetail', [item] = item]);
+    // this._router.navigateByUrl('/productdetail', state :{ ProductID: item.ProductID});
+    this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
+  }
 }
