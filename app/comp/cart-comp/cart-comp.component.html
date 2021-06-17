@@ -1,31 +1,58 @@
-<div class="col-sm-12 col-md-10 col-md-offset-1">
+<table>
+    <tr>
+      <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp;
+      <th>Quantity</th> &nbsp; &nbsp; &nbsp; &nbsp;
+      <th>Price</th> &nbsp; &nbsp; &nbsp; &nbsp;
+      <th>Total</th> &nbsp; &nbsp; &nbsp; &nbsp;
+    </tr>
+    <tr  *ngFor="let item of cart ;  let i = index  ">
+        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="button" class="btn btn-danger">
+            <span class="fa fa-remove"></span> Remove
+            </button>
+    </tr>
+</table>
+<button type="button" class="btn btn-success">
+    Checkout 
+    </button>
+
+<!-- <div class="col-sm-12 col-md-10 col-md-offset-1">
     <table class="table table-hover">
     <thead>
     <tr>
     <th>Product</th>
-  
     <th>Quantity</th>
     <th class="text-center">Price</th>
     <th class="text-center">Total</th>
-    <th> </th>
     </tr>
     </thead>
     <tbody>
-    <tr>
+     <tr>
     <td class="col-sm-8 col-md-6">
-    <div class="media">
-    <!-- <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> -->
-    <img class= "media image-bg" [src]="item.ImageURL" style="width:30%; height:100px" />
-    <div class="media-body">
-    <h4 class="media-heading"><a href="#">{{item.Name}}</a></h4>
-   
-    </div>
-    </div></td>
+    <div class="media"> 
+     <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a> -->
+    <!-- <img class= "media image-bg" [src] style="width:30%; height:100px" />
+    <div class="media-body"> -->
+    <!-- <h4 class="media-heading"><a href="#">gh</a></h4> -->
     
-    <td class="col-sm-1 col-md-1" style="text-align: center">
+    <!-- <tr  *ngFor="let item of cart ;  let i = index  ">
+        
+        <td style="color:black"   href="#">{{item.productName}} </td>
+        <td style="color:black"   href="#">{{item.qty}} <span class="caret"></span></td>
+        <td style="color:black"   href="#">{{item.price}} <span class="caret"></span></td>
+        <td style="color:black"   href="#">{{item.price*item.qty}} <span class="caret"></span></td>
+    </tr>
+    </div>
+    </div>
+    </td>
+     --> 
+    <!-- <td class="col-sm-1 col-md-1" style="text-align: center">
     <input type="email" class="form-control" id="exampleInputEmail1" value="2">
     </td>
-    <td class="col-sm-1 col-md-1 text-center"><strong>Rs.{{item.Price}}</strong></td>
+    <td class="col-sm-1 col-md-1 text-center"><strong>Rs.</strong></td>
     <td class="col-sm-1 col-md-1 text-center"><strong>Rs.3600</strong></td>
     <td class="col-sm-1 col-md-1">
     <button type="button" class="btn btn-danger">
@@ -34,11 +61,11 @@
     </tr>
     <tr>
     <td class="col-md-6">
-    <div class="media">
+    <div class="media"> 
 
-    </div></td>
+    </div></td>-->
        
-    <tr>
+    <!-- <tr>
     <td>   </td>
     <td>   </td>
     <td>   </td>
@@ -57,4 +84,5 @@
     </tr>
     </tbody>
     </table>
-    </div>
+    </div> -->
+

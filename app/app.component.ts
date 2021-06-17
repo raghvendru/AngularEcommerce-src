@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMenu();
-    this.back();
+    // this.back();
   }
 
   constructor(private categoryService:CategoryService,private _Activatedroute:ActivatedRoute,
@@ -40,7 +40,17 @@ export class AppComponent implements OnInit {
 
   }
 
-  back() {
-    this._router.navigate(['/landing']);
+  // back() {
+  //   this._router.navigate(['/landing']);
+  // }
+
+  onClickItem(category: any){
+    this.selectedItem = category;
+    // console.log(this.selectedItem);
+    // this._router.navigate(['productdetail', this.selectedItem]);
+    // this._router.navigate(['productdetail', [item] = item]);
+    // this._router.navigateByUrl('/productdetail', state :{ ProductID: item.ProductID});
+    // this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
+      
   }
 }

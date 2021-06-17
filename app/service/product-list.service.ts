@@ -16,16 +16,16 @@ export class ProductListService extends BaseService {
     super(apiSrv);
    }
 
-   private buildHttpParams(params: any) : Object {
-    let httpParam = new HttpParams() ;
-    for (const key in params) {
-      httpParam.set(key, params[key]) ;
-    }
-    return httpParam;
-  } 
+  //  private buildHttpParams(params: any) : Object {
+  //   let httpParam = new HttpParams() ;
+  //   for (const key in params) {
+  //     httpParam.set(key, params[key]) ;
+  //   }
+  //   return httpParam;
+  // } 
 
   getProductList(paramsObject:any) : Observable<any> {
-
+    console.log(paramsObject);
     return this.apiSrv.getData(this.productListUrl,paramsObject )
       .pipe(
         map(response => {

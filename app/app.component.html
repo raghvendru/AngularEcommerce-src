@@ -4,19 +4,19 @@
       <a class="navbar-brand" href="#">U-Shop</a>
     </div>
     <ul class="nav navbar-nav" >
-      <li class="active" ><a routerLink="/landing">Home</a></li>
+      <li class="active" >Home</li>
       <li class="dropdown" *ngFor="let item of menu ;  let i = index  ">
-        <!-- <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span> -->
+        <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span>
           
-<a [routerLink]="['/productlist', item.CategoryID]">{{item.Name}} </a>
+<!-- <a [routerLink]="['/productlist', item.CategoryID]">{{item.Name}} </a> -->
       
 
-        <!-- <ul class="dropdown-menu">
-          <li><a href="#">Mobiles</a></li>
-          <li><a href="#">Laptops</a></li>
-          <li><a href="#">Pendrives</a></li>
-        </ul> -->
-      <!-- </li> -->
+        <ul class="dropdown-menu">
+          <li class = "dropdown-menu   "><a href="#">phone</a></li>
+           <li><a href="#">Laptops</a></li> 
+          <li><a href="#">Pendrives</a></li> 
+        </ul> 
+       </li> 
       <!-- <li class="dropdown"><p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">Groceries <span class="caret"></span>
       </p>
         <ul class="dropdown-menu">

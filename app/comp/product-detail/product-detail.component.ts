@@ -13,7 +13,7 @@ export class ProductDetailComponent implements OnInit {
 
   public item:any;
   public sub: Subscription = new Subscription ;
-  // public selectedItem = null;
+  public selectedItem = null;
 
   constructor(private _Activatedroute:ActivatedRoute,
     private _router:Router) { 

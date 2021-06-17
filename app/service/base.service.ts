@@ -38,6 +38,8 @@ export abstract class BaseService {
 
   // }
 
+  
+
   getListPage(paramsObject:any) : Observable<any> {
     this.preGetListPage();
 

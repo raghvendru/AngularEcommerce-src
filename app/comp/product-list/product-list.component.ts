@@ -73,7 +73,7 @@ export class ProductListComponent implements OnInit {
 
   onClickItem(item: any){
     this.selectedItem = item;
-    // console.log(this.selectedItem);
+    console.log(this.selectedItem);
     // this._router.navigate(['productdetail', this.selectedItem]);
     // this._router.navigate(['productdetail', [item] = item]);
     // this._router.navigateByUrl('/productdetail', state :{ ProductID: item.ProductID});

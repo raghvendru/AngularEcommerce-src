@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -14,19 +14,33 @@ export class ApiService {
     this.httpClient = http;
   }
 
-  // private buildHttpParams(params: any) : HttpParams {
-  //   let httpParam = new HttpParams ;
-  //   for (const key in params) {
-  //     httpParam.set(key, params[key]) ;
-  //   }
-  //   return httpParam;
-  // }
-
+  private buildQueryParams(paramsObject: any): string {
+    // url?key1=val1&key2=val2&key3=val3
+    try {
+      let queryParams = '';
+      console.log(paramsObject);
+      if (paramsObject != null) {
+        for (const key in paramsObject) {
+          console.log(queryParams);
+          if (queryParams === '') {
+            queryParams = '?' + key + '=' + paramsObject[key];
+          } else {
+            queryParams = queryParams +  '&' + key + '=' + paramsObject[key];
+          }
+        }
+      }
+      return queryParams;
+    }
+    catch (e) {
+      throw e;
+    }
+  }
+  
   getData(url:any, params:any) : Observable<any> {
-    //httpparam : HttpParams = this.buildHttpParams(params) ;
+    let queryParam  = this.buildQueryParams(params) ;
     var data = null ;
     try {
-      return this.httpClient.get(this.baseURL + url).pipe(
+      return this.httpClient.get(this.baseURL + url + queryParam).pipe(
         map(response => {
           let a:any = response;
           if (a['response_object'] === undefined) {

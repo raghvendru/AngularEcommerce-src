@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "orderlist", component: OrderListComponent},
   { path: "landing", component: LandingComponent},
   { path: "checkout", component: CheckoutCompComponent},
-  { path: '**', redirectTo: 'landing' },
+  // { path: '**', redirectTo: 'landing' },
 ];
 
 @NgModule({
