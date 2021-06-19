@@ -59,11 +59,24 @@ export class ApiService {
     }
    }
 
-  postData(url:any, json_key:string,  param:any) {
+  postData(url:any, json_key:string,  param:any) : Observable<any> {
     var formDAtaObject: any = new FormData();
     formDAtaObject.append(json_key, JSON.stringify(param));
 
-    this.httpClient.post(this.baseURL + url, formDAtaObject);
+    try {
+      return this.httpClient.post(this.baseURL + url, formDAtaObject).pipe(
+        map(response => {
+        
+          return response;
+        }),
+        catchError(ex => {
+          return ex;
+        })
+      );
+    } catch (e) {
+      throw(e);
+    }
+   
   }
   
 }

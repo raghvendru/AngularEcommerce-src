@@ -1,23 +1,28 @@
 <table>
     <tr>
+        <th>Image</th> 
       <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp;
       <th>Quantity</th> &nbsp; &nbsp; &nbsp; &nbsp;
       <th>Price</th> &nbsp; &nbsp; &nbsp; &nbsp;
       <th>Total</th> &nbsp; &nbsp; &nbsp; &nbsp;
     </tr>
     <tr  *ngFor="let item of cart ;  let i = index  ">
-        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
-        <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
-        <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
-        <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp;
-        <button type="button" class="btn btn-danger">
-            <span class="fa fa-remove"></span> Remove
-            </button>
+        <td><img class= "media image-bg" [src] = "item.imageurl" style="width:30%; height:100px" /></td> 
+        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <!-- Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" > --> 
+        <!-- <b>Type</b><input type=text name=type value='Enter your user id' onclick="make_blank();">Enter User ID -->
+        <td><input type='text' value={{item.qty}} (click)="clickingText(i)"></td>
+        <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="button" class="btn btn-danger" (click)="onClickItem(i)">
+            <span class="fa fa-remove" ></span> Remove
+        </button>
     </tr>
-</table>
+ </table>
 <button type="button" class="btn btn-success">
     Checkout 
-    </button>
+</button> 
 
 <!-- <div class="col-sm-12 col-md-10 col-md-offset-1">
     <table class="table table-hover">

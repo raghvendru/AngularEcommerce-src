@@ -17,9 +17,6 @@ export class CategoryService extends BaseService {
     super(apiSrv);
    }
 
-  
-  
-
    getMenu() : Observable<any> {
 
     return this.apiSrv.getData(this.menuURL, null)

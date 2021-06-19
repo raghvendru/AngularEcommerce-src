@@ -44,8 +44,9 @@ export class AppComponent implements OnInit {
   //   this._router.navigate(['/landing']);
   // }
 
-  onClickItem(category: any){
-    this.selectedItem = category;
+  onClickItem(a: any){
+    this.selectedItem = a;
+    console.log(this.selectedItem)
     // console.log(this.selectedItem);
     // this._router.navigate(['productdetail', this.selectedItem]);
     // this._router.navigate(['productdetail', [item] = item]);

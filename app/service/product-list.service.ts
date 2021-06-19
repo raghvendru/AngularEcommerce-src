@@ -10,7 +10,7 @@ import { BaseService } from './base.service';
 })
 export class ProductListService extends BaseService {
 
-  private productListUrl = 'product/product-by-sub-cat?sub_cat_id=1&page_num=1&page_size=10';
+  private productListUrl = 'product/product-by-sub-cat';
 
   constructor(private apiSrv:ApiService) {
     super(apiSrv);

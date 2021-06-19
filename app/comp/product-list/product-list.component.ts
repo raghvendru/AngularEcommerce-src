@@ -70,7 +70,6 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-
   onClickItem(item: any){
     this.selectedItem = item;
     console.log(this.selectedItem);

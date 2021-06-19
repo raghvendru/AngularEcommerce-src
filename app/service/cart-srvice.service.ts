@@ -12,6 +12,10 @@ import { BaseService } from './base.service';
 export class CartSrviceService extends BaseService{
 
   private cartURL = 'cart/get-object';
+  private deleteURL = 'cart/delete-item';
+  private json_key = 'cart_json';
+  private addURL = 'cart/add';
+  private updateURL = 'cart/update-item';
 
   constructor(private apiSrv: ApiService) {
     super(apiSrv);
@@ -33,4 +37,50 @@ export class CartSrviceService extends BaseService{
       );
  }
 
+ 
+ deleteCartItem(paramObject: any) : Observable<any> {
+
+  console.log(paramObject);
+  return this.apiSrv.postData(this.deleteURL, this.json_key, paramObject)
+    .pipe(
+      map(response => {
+        console.log("serviceresponse");
+        console.log(response);
+        return response;
+      }),
+      catchError(ex => {
+        return ex;
+      })
+    );
+} 
+
+updateCartItem(paramObject: any) : Observable<any> {
+  console.log("cart service****");
+  console.log(paramObject);
+  return this.apiSrv.postData(this.updateURL, this.json_key, paramObject)
+    .pipe(
+      map(response => {
+        console.log(response);
+        return response;
+      }),
+      catchError(ex => {
+        return ex;
+      })
+    );
+} 
+addCartItem(paramObject: any) : Observable<any> {
+
+  console.log(paramObject);
+  return this.apiSrv.postData(this.addURL, this.json_key, paramObject)
+    .pipe(
+      map(response => {
+        console.log("serviceresponse");
+        console.log(response);
+        return response;
+      }),
+      catchError(ex => {
+        return ex;
+      })
+    );
+} 
 }

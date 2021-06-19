@@ -1,22 +1,39 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" >
       <a class="navbar-brand" href="#">U-Shop</a>
     </div>
     <ul class="nav navbar-nav" >
-      <li class="active" >Home</li>
+      <li class="active"  ><a href="#">Home</a></li>
       <li class="dropdown" *ngFor="let item of menu ;  let i = index  ">
-        <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span>
-          
-<!-- <a [routerLink]="['/productlist', item.CategoryID]">{{item.Name}} </a> -->
+        <!-- <div (click)="onClickItem(item)"> -->
+          <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span>
+            <!-- <a [routerLink]="['/productlist', item.CategoryID]"> </a> -->
+             <option *ngFor="let color of item.subcategories "> I want to list the colors of the person here
+          {{color.Name}}
+             </option>
+          </p>
+      </li>
+    </ul>
+  </div>
       
 
-        <ul class="dropdown-menu">
-          <li class = "dropdown-menu   "><a href="#">phone</a></li>
-           <li><a href="#">Laptops</a></li> 
-          <li><a href="#">Pendrives</a></li> 
-        </ul> 
-       </li> 
+        <!-- <ul class="dropdown-menu">  -->
+          <!-- <li class = "dropdown-menu  " *ngFor = " let a of item.subcategories ; let i = index "> -->
+          <!-- <li class="dropdown-menu "><a href="#">{{a.Name}}</a></li>   -->
+          <!-- <li><a href="#">Pendrives</a></li>  -->
+          <!-- <a href="#">{{a.Name}}</a> -->
+          <!-- <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown-menu" href="#">{{a.Name}} <span class="caret"></span> -->
+          
+          <!-- <p *ngFor="let color of item.subcategories "> I want to list the colors of the person here
+          {{color.Name}}
+          </p> -->
+          <!-- </li> 
+        </ul> -->
+     
+    <!-- </li>
+    </ul> -->
+  <!-- </div> -->
       <!-- <li class="dropdown"><p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">Groceries <span class="caret"></span>
       </p>
         <ul class="dropdown-menu">
@@ -42,7 +59,7 @@
         </ul>
       </li>
      -->
-    </ul>
+   
     <div class="search-container" style="float: right; margin-top: 10px;">
       <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 1px; font-size: 30px;float: right;"></i>
       <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 1px; font-size: 30px;float:right;"></i>
@@ -51,7 +68,7 @@
 
   </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-  </div>
+  
  
 </nav>
 
