@@ -1,16 +1,31 @@
-<!-- <p>order-list works!</p> -->
+<!-- <p>order-list works!</p>
 
 <div style="border: none; background-color: white;"><b>Order 1</b></div>
 <div class="container">
     <img src="\assets\Shoe.jpg" style="width:10%; height:100px" />
-  <div><b>Men's Shoes Fashion</b><br>AVU Men's Running Shoes Lightweight Non Slip <p>Sneakers Breathable Walking Fashion Athletic Gym Tennis Shoes</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <div *ngFor="let item of productlist ;  let i = index"><b>Men's Shoes Fashion</b><br>AVU Men's Running Shoes Lightweight Non Slip <p>Sneakers Breathable Walking Fashion Athletic Gym Tennis Shoes</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <div><b>Amount</b><p>Rs.1800</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <div><b>delivering date</b><p>june 15th</p></div>
 </div>
-<div style="border: none; background-color: white;"><b>Order 2</b></div>
-<div class="container">
-    <img src="\assets\earpod.jpg" style="width:10%; height:100px" />
-  <div><b>OnePlus Buds Z (White)</b><br> Special Feature Earbud Connector Type Wireless<br>Brand OnePlus Wireless Communication Technology	Bluetooth</div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <div><b>Amount</b><p>Rs.2999</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <div><b>delivering date</b><p>june 15th</p></div>
-</div>
+ -->
+
+ <table>
+  <tr>
+      <th>Image</th> 
+    <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <th>Quantity</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <th>Amount</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <th>delivering Date</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  </tr>
+  <tr *ngFor="let order of orderList ;  let i = index ">
+    <td *ngFor="let product of order.items ; let i = index"><img class= "media image-bg" [src] = "product.imageurl" style="width:30%; height:100px" /></td> 
+      <!-- <tr *ngFor="let product of order.items ; let i = index"> -->
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.totalprice}} </td> &nbsp; &nbsp; &nbsp; &nbsp; 
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.orderdate}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <!-- <input  data-id="{{col.rowIndex}}-{{col.columnIndex}}" [value]="col.cellValue" (input)="col.cellValue = $event.target.value" (click)="model.selectColumn(col)" (keyup)="navigate($event)" /> -->
+      <!-- </tr> -->
+      </tr>
+</table>
+
