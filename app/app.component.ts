@@ -37,12 +37,17 @@ export class AppComponent implements OnInit {
         console.log(error1);
       }
     );
-
+  
   }
 
   // back() {
   //   this._router.navigate(['/landing']);
   // }
+
+  rel(){
+    location.reload();
+    
+  }
 
   onClickItem(a: any){
     this.selectedItem = a;
@@ -54,4 +59,7 @@ export class AppComponent implements OnInit {
     // this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
       
   }
+
+
+  
 }

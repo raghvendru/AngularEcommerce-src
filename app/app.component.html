@@ -1,21 +1,23 @@
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header" >
       <a class="navbar-brand" href="#">U-Shop</a>
     </div>
     <ul class="nav navbar-nav" >
       <li class="active"  ><a href="#">Home</a></li>
-      <li class="dropdown" *ngFor="let item of menu ;  let i = index  ">
+      <li class="dropdown" (click) = "rel()" style="color:white" *ngFor="let item of menu ;  let i = index  "> -->
         <!-- <div (click)="onClickItem(item)"> -->
-          <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span>
-            <!-- <a [routerLink]="['/productlist', item.CategoryID]"> </a> -->
-             <option *ngFor="let color of item.subcategories "> I want to list the colors of the person here
-          {{color.Name}}
-             </option>
+          <!-- <p style="color:white" class="dropdown-toggle kh" data-toggle="dropdown" href="#">{{item.Name}} <span class="caret"></span>
+            <a [routerLink]="['/productlist', item.CategoryID]"> </a> 
+            <option *ngFor="let color of item.subcategories ">
+              {{color.Name}}
+            </option>
+             
           </p>
       </li>
     </ul>
-  </div>
+  </div> -->
+  
       
 
         <!-- <ul class="dropdown-menu">  -->
@@ -60,7 +62,7 @@
       </li>
      -->
    
-    <div class="search-container" style="float: right; margin-top: 10px;">
+    <!-- <div class="search-container" style="float: right; margin-top: 10px;">
       <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 1px; font-size: 30px;float: right;"></i>
       <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 1px; font-size: 30px;float:right;"></i>
       <input type="text" placeholder="Search.." name="search">
@@ -76,4 +78,38 @@
 
 <div class="footer" style="height: 20px;">
   <p>About Us</p>
+</div> -->
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <a class="navbar-brand" href="#">U-Shop</a>
+    </div>
+    <ul class="nav navbar-nav" >
+      <li class="active"  ><a href="#">Home</a></li>
+      <div class="dropdown" (click)="rel()"*ngFor="let item of menu ;  let i = index  ">
+        <span>{{item.Name}}</span>
+        <div class="dropdown-content">
+          <a [routerLink]="['/productlist', item.CategoryID ]" *ngFor="let color of item.SubCategories ; let i=index ">
+          <p class="dropdown-toggle " data-toggle="dropdown" href="#">{{color.Name}}</p></a>
+        </div>
+      </div>
+    </ul>
+    <div class="search-container" style="float: right; margin-top: 10px;">
+      <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 5px; font-size: 30px;float: right;"></i>
+      <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 5px; font-size: 30px;float:right;"></i>
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" style="margin-right: 10px;"><i class="fa fa-search"></i></button>
+  </div>
+  </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+</nav>
+<router-outlet></router-outlet>
+<div class="footer" style="height: 20px;">
+  <p>About Us</p>
 </div>
+
+
+

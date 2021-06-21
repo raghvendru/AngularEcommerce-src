@@ -11,8 +11,8 @@
         <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <!-- Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" > --> 
         <!-- <b>Type</b><input type=text name=type value='Enter your user id' onclick="make_blank();">Enter User ID -->
-        <td><input type='text' value={{item.qty}} (click)="clickingText(i)"></td>
-        <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td><input type='text' name = "qty" value={{item.qty}}  (click)="clickingText(i)" ></td>
+        <!-- <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
         <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <button type="button" class="btn btn-danger" (click)="onClickItem(i)">

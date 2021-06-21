@@ -19,9 +19,7 @@ export class CustomerServiceService extends BaseService{
     return this.apiSrv.getData(this.custAuthenticateURL,paramsObject )
       .pipe(
         map(response => {
-         // console.log('productList');
           console.log(response);
-         // console.log('productList');
           return response;
         }),
         catchError(ex => {

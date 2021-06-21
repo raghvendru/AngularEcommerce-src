@@ -42,7 +42,8 @@
 						Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" >
 						<div class="action">
 							<button class="add-to-cart btn btn-default" type="button" (click)="onClickItem()">add to cart</button>&nbsp; &nbsp;
-                            <button class="add-to-cart btn btn-default" type="button">order it</button>
+                            <button class="add-to-cart btn btn-default" type="button">
+							<a [routerLink]="['/productlist', item.CategoryID]"> </a>order it</button>
 							<!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
 							<!-- <input type="text" > -->
 						</div>

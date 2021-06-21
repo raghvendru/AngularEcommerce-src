@@ -9,9 +9,9 @@ import { CustomerServiceService } from 'src/app/service/customer-service.service
 })
 export class LoginComponent implements OnInit {
 
-  private phone: number = 0;
+  public phone: any;
   private sessionid: String = "1234";
-  private password:String = " "; 
+  public password:String ="" ;
   public custDetail: any = {};
 
   constructor(private cstSrv: CustomerServiceService, private _Activatedroute:ActivatedRoute,
@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   
   onClick(){
     this.getCustDetails();
+    console.log("variables ---");
+    console.log(this.phone);
+    console.log(this.password);
     
     // this._router.navigateByUrl('/checkout', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
   }

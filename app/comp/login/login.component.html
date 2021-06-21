@@ -1,8 +1,14 @@
 <div class="login">
     <h1 style="font-style: initial;">Login</h1>
     <form action="" method="" >
-        <input type="text" placeholder="Phone Number" title="phone"  />
-        <input type="password" placeholder="Password" title="password" />
-    <button title="login" (click) = "onClick()">Submit</button>
-    </form>
+        <input type="text" name="Phone Number" placeholder="Phone Number" [(ngModel)]="phone">
+        <input type="password" name="Password"  placeholder="Password" [(ngModel)]="password">
+        <!-- <button title="login" (click) = "onClick()">Submit</button>
+     -->
+        <button type="button" class="btn btn-danger" (click)="onClick()">
+          Submit
+        </button>
+</form>
 </div>
+
+<app-checkout-comp [detail]= "custDetail"></app-checkout-comp> 

@@ -15,7 +15,7 @@ export class CartCompComponent implements OnInit {
   sessionid : String = "1234" ;
   customerid : number = 1 ;
   public selectedItem = null;
-  public quantity: number = 1;
+  public quantity: any;
   public item: any;
   
   public cart:Array<any>=[];
