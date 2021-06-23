@@ -11,6 +11,7 @@ import { ProductListService } from 'src/app/service/product-list.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  search : String = "";
   pageNum : number = 1 ;
   pageSize : number = 10;
 
@@ -78,4 +79,7 @@ export class ProductListComponent implements OnInit {
     // this._router.navigateByUrl('/productdetail', state :{ ProductID: item.ProductID});
     this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
   }
+
+  
+
 }

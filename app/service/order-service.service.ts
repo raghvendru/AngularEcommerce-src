@@ -45,5 +45,21 @@ export class OrderServiceService extends BaseService {
         return ex;
       })
     );
-} 
+  }
+  
+  updateOrder(paramObject: any) : Observable<any> {
+
+    console.log(paramObject);
+    return this.apiSrv.postData(this.addorderURL, this.json_key, paramObject)
+      .pipe(
+        map(response => {
+          console.log("serviceresponse");
+          console.log(response);
+          return response;
+        }),
+        catchError(ex => {
+          return ex;
+        })
+      );
+    }
 }

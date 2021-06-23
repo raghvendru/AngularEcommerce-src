@@ -137,20 +137,22 @@ span{
   margin: 10px;
   margin-top: -20px;
   color: #f9f9f9;
-  border-bottom: #ffffff 2px solid;
   text-decoration: none;
+}
+span:hover{
+  border-style: solid 2px white;
+
 }
 p{
   color: rgb(0, 0, 0);
-  padding-top: 15px;
-  border-bottom: #000000 2px solid;
+  /* padding-top: 15px; */
   text-align: justify;
-  text-align: center;
+  text-align: left;
+  text-decoration: none;
 }
 .dropdown {
   color: #f9f9f9; 
   padding: 15px;
-
   position: relative;
   display: inline-block;
 }
@@ -168,7 +170,7 @@ p{
   z-index: 1;
 }
 a:hover{
-  
+  border-style: solid 1px white ;
   background-color: #d8ff2b;
   color: #ffae00;
   
@@ -176,10 +178,12 @@ a:hover{
 }
 .dropdown:hover .dropdown-content {
   display: block;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  
+  border-style: solid 1px black ;
   
   background-color: rgb(255, 255, 255);
-  border: solid 4px rgb(0, 0, 0);
+  /* border: solid 4px rgb(0, 0, 0); */
   color: #d8ff2b;
 /* background-color: rgb(255, 255, 255); */
 

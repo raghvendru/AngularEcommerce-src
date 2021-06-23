@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerServiceService } from 'src/app/service/customer-service.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   private sessionid: String = "1234";
   public password:String ="" ;
   public custDetail: any = {};
-
+  public msg :String="customerdd";
   constructor(private cstSrv: CustomerServiceService, private _Activatedroute:ActivatedRoute,
     private _router:Router) { }
 

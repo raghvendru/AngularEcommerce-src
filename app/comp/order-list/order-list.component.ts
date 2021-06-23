@@ -38,6 +38,25 @@ export class OrderListComponent implements OnInit {
 
   }
 
+//   order_json = {"customerid":1,
+//               "addressid":2,
+//              "paymenttype":"cash",
+//              "paymentstatus":"paid",
+//              "totalprice":200}
+// {"customerid":1,"addressid":2,"paymenttype":"cash","paymentstatus":"paid",
+// "totalprice":200,"orderitem":[{"productid":1,"qty":2,"price":32}]}
+
+// http://localhost:8000/api/main/order/add?order_json=order_json = 
+// {"customerid":1,
+//               "addressid":2,
+//              "paymenttype":"cash",
+//              "paymentstatus":"paid",
+//              "totalprice":200}
+// {"customerid":1,"addressid":2,"paymenttype":"cash","paymentstatus":"paid",
+// "totalprice":200,"orderitem":[{"productid":1,"qty":2,"price":32}]}
+// Query Params
+
+
   addOrder(paramObject: any){
     this.ordSrv.addOrder(paramObject).subscribe(
       
@@ -45,6 +64,22 @@ export class OrderListComponent implements OnInit {
       console.log(data);
       // deleting the item
       // this.cart.push(1);
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+
+  }
+
+  updateOrder(paramObject: any, i: number){
+    this.ordSrv.updateOrder(paramObject).subscribe(
+      
+      data => {
+      console.log(data);
+      // this.cart[i].qty
+      // updating the item
+
       },
       error1 => {
         console.log(error1);

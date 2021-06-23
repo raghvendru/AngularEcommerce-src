@@ -140,5 +140,10 @@ export class CartCompComponent implements OnInit {
       }
     );
 
-  }  
+  } 
+  onClick(){
+    console.log("checkout");
+    this._router.navigateByUrl("/checkout");
+
+  } 
 }

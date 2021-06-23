@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Input } from '@angular/core';
+
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Output, EventEmitter } from '@angular/core';
 
 })
 export class CheckoutCompComponent implements OnInit {
-  @Input() detail: any = {}; 
+ 
  
 
   constructor() { }
