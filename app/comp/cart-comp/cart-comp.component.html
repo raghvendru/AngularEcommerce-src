@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
     <tr>
         <th>Image</th> 
       <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp;
@@ -8,12 +8,12 @@
     </tr>
     <tr  *ngFor="let item of cart ;  let i = index  ">
         <td><img class= "media image-bg" [src] = "item.imageurl" style="width:30%; height:100px" /></td> 
-        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
         <!-- Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" > --> 
         <!-- <b>Type</b><input type=text name=type value='Enter your user id' onclick="make_blank();">Enter User ID -->
-        <td><input type='text' name = "qty" value={{item.qty}}  (click)="clickingText(i)" ></td>
+        <!-- <td><input type='text' name = "qty" value={{item.qty}}  (click)="clickingText(i)" ></td> -->
         <!-- <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-        <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <!-- <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <button type="button" class="btn btn-danger" (click)="onClickItem(i)">
             <span class="fa fa-remove" ></span> Remove
@@ -22,7 +22,40 @@
  </table>
 <button type="button" class="btn btn-success" (click)="onClick()">
     Checkout 
-</button> 
+</button>  -->
+
+
+<div class="row " >
+
+    <div class="card col-12"*ngFor="let item of cart ;  let i = index  ">
+      <div class="col-2">
+        
+     <div class="im" ><img [src] = "item.imageurl"   alt="Avatar" style="width:170px; height: 120px;"></div>
+      </div>
+      <div class="col-10">
+      <p style="width: 80%;">ProductName:-&nbsp;&nbsp;{{item.productname}} </p>
+      <p style="width: 80%;">Price:-&nbsp;&nbsp;{{item.price}} </p>
+          
+      <p >Total:-&nbsp;&nbsp;{{item.price*item.qty}} </p>
+      <p>Qty:-<select id="select" name="Qty">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+      </select></p>
+      <button style="background-color:lightgray ; color: black;" type="button" class="btn btn-danger" (click)="onClickItem(i)">
+        <span class="fa fa-remove" ></span> Remove
+    </button>
+    </div>
+    </div>
+    </div>
+    <button type="button"  style="background-color:#e06e9f; float: right; padding:15px;color: rgb(255, 255, 255);" class="btn btn-success" (click)="onClick()">
+        Checkout 
+    </button> 
+    <br>
+    <br>
+    <br>
 
 
 

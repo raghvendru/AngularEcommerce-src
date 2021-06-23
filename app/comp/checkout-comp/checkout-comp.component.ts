@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-comp',
@@ -13,7 +14,8 @@ export class CheckoutCompComponent implements OnInit {
   public customerDetail : any = {};
  
 
-  constructor() { 
+  constructor(private _Activatedroute:ActivatedRoute,
+    private _router:Router) { 
     
   }
 
@@ -23,6 +25,10 @@ export class CheckoutCompComponent implements OnInit {
     console.log("I m checkout");
     console.log(this.customerDetail);
 
+
+  }
+  onClickPlace(){
+    this._router.navigateByUrl("/landing");
 
   }
 

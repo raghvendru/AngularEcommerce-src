@@ -28,7 +28,7 @@
       <!-- </tr> 
       </tr>
 </table> -->
-
+<!-- 
 <div class="row ">
 
   <div class="col-12">
@@ -49,4 +49,20 @@
   <div class="col-3" style="text-align: center;">{{order.orderdate}} </div>
 </div>
 
-</div>
+</div> -->
+
+<div class="row " *ngFor="let order of orderList ;  let i = index ">
+
+  <div class="card col-12" *ngFor="let product of order.items ; let i = index">
+    <div class="col-2">
+      
+   <div class="im" ><img [src] = "product.imageurl"   alt="Avatar" style="width:auto; height: 110px;"></div>
+    </div>
+    <div class="col-10">
+    <p style="width: 80%;">Product:-&nbsp;&nbsp;{{product.productname}} </p>
+        
+    <p >Quantity:-&nbsp;&nbsp;{{product.qty}}</p>
+    <p>Date:- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.orderdate}} </p>
+  </div>
+  </div>
+  </div>

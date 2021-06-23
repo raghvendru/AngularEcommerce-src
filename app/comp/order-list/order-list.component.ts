@@ -12,6 +12,14 @@ export class OrderListComponent implements OnInit {
   public pageSize: number = 2;
   public customerID: number = 1;
   public orderList: Array<any>=[];
+  public addressID:number=2;
+  public paymentType:String ="cash";
+  public paymentStatus:String = "paid";
+  public totalPrice:number = 200;
+  public orderItems:any = [];
+  public productID:number=1;
+  public qty:number=1;
+  public price:number=100;
 
   constructor(private ordSrv: OrderServiceService) { }
 
@@ -38,13 +46,6 @@ export class OrderListComponent implements OnInit {
 
   }
 
-//   order_json = {"customerid":1,
-//               "addressid":2,
-//              "paymenttype":"cash",
-//              "paymentstatus":"paid",
-//              "totalprice":200}
-// {"customerid":1,"addressid":2,"paymenttype":"cash","paymentstatus":"paid",
-// "totalprice":200,"orderitem":[{"productid":1,"qty":2,"price":32}]}
 
 // http://localhost:8000/api/main/order/add?order_json=order_json = 
 // {"customerid":1,

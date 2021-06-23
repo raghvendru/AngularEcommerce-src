@@ -95,7 +95,7 @@ export class ProductListComponent implements OnInit {
     this.productListSrv.getSearchPage(param).subscribe(
       data => {
        console.log(data);
-       this.productlist = data.data;
+       this.productlist = data;
         
       },
       error1 => {

@@ -88,4 +88,15 @@ export class AppComponent implements OnInit {
     // this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
       
   }
+
+  onClickHome(){
+    this._router.navigateByUrl("/landing");
+  }
+
+  onClickCart(){
+    this._router.navigateByUrl("/cart");
+
+  }
+
+  
 }

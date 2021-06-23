@@ -1,82 +1,13 @@
 
-<div class="container">
-  
-    <h1>List of products</h1>
-    <br>
-    <br>
-    <div class="col-12">
-    <div class="row">
-      
-        <div class="col-md-3" *ngFor="let item of productlist ;  let i = index">
-          <div class="dress-card" (click)="onClickItem(item)">
-            <div class="dress-card-head">
-              <img class="dress-card-img-top image-bg" [src] = "item.ImageURL" alt="1234">
-             
-            </div>
-            <div class="dress-card-body">
-              <h4 class="dress-card-title"><b >{{item.Name}}</b></h4> 
-              <!-- <p class="dress-card-para">{{item.Description}}</p> -->
-              <p class="dress-card-para"><span class="dress-card-price">Rs.{{item.Price}} &ensp;</span></p>
-              <div class="row">
-                <!-- <div class="col-md-6 card-button"><a href=""><div class="card-button-inner bag-button">Add to Cart</div></a></div> -->
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-        
-
-      <!-- <div class="col-md-3">
-          <div class="dress-card">
-            <div class="dress-card-head">
-              <img class="dress-card-img-top" [src] = "item.ImageURL" alt="1234">
-            </div>
-            <div class="dress-card-body">
-              <h4 class="dress-card-title">Harpa</h4>
-              <p class="dress-card-para">Womans printed clothing</p>
-              <p class="dress-card-para"><span class="dress-card-price">Rs.839 &ensp;</span></p>
-              <div class="row">
-                <div class="col-md-6 card-button"><a href=""><div class="card-button-inner bag-button">Add to Cart</div></a></div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-     <div class="col-md-3">
-          <div class="dress-card">
-            <div class="dress-card-head">
-              <img class="dress-card-img-top" src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/7578929/2018/10/23/86988cdc-cbe3-4b13-93f9-b37ad571b4761540274855321-Harpa-Women-Dresses-9171540274855158-1.jpg" alt="">
-             
-            </div>
-            <div class="dress-card-body">
-              <h4 class="dress-card-title">Harpa</h4>
-              <p class="dress-card-para">Womans printed clothing</p>
-              <p class="dress-card-para"><span class="dress-card-price">Rs.839 &ensp;</span></p>
-              <div class="row">
-                <div class="col-md-6 card-button"><a href=""><div class="card-button-inner bag-button">Add to Cart</div></a></div>
-                
-              </div>
-            </div>
-          </div>
-        </div> 
-      <div class="col-md-3">
-          <div class="dress-card">
-            <div class="dress-card-head">
-              <img class="dress-card-img-top" src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/7578940/2018/10/23/fe701151-69e6-4e20-9e2a-ace63081a8e11540282217137-Harpa-Women-Dresses-191540282216937-5.jpg" alt="">
-          
-            <div class="dress-card-body">
-              <h4 class="dress-card-title">Harpa</h4>
-              <p class="dress-card-para">Womans printed clothing</p>
-              <p class="dress-card-para"><span class="dress-card-price">Rs.839 &ensp;</span></p>
-              <div class="row">
-                <div class="col-md-6 card-button"><a href=""><div class="card-button-inner bag-button">Add to Cart</div></a></div>
-               
-              </div>
-            </div>
-          </div>
-        </div>
-       -->
    
+       <div class="row" >          
+          
+        <div class="card col-12"  (click)="onClickItem(item)" *ngFor="let item of productlist ;  let i = index">
+         <div class="im" ><img [src] = "item.ImageURL"   alt="Avatar" style="width:auto; height: 150px;"></div>
+          <div class="container col-10"><br><br>
+            <div class="h4">{{item.Name}} </div> 
+            <br>
+            <p><b>Rs.{{item.Price}}</b></p> 
+          </div>
+        </div>
+        </div>

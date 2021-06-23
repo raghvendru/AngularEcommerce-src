@@ -20,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(private _Activatedroute:ActivatedRoute,
     private _router:Router, private cartSrv:CartSrviceService) { 
       this.item = this._router.getCurrentNavigation()?.extras.state;
+      console.log("hii");
       console.log(this.item);
     }
 
@@ -53,6 +54,7 @@ export class ProductDetailComponent implements OnInit {
     param['customerid'] = null;
     param['cartitem'] = cartitem;
     this.addCartItem(param);
+    // this._router.navigateByUrl("/productlist/:this.item.SubCategoryID");
   }
   addCartItem(paramObject: any){
     this.cartSrv.addCartItem(paramObject).subscribe(
