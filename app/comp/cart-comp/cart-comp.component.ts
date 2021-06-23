@@ -17,6 +17,7 @@ export class CartCompComponent implements OnInit {
   public selectedItem = null;
   public quantity: any;
   public item: any;
+  public loginInfo : any = {};
   
   public cart:Array<any>=[];
 
@@ -42,6 +43,7 @@ export class CartCompComponent implements OnInit {
     
   ngOnInit(): void {
     this.getCart();
+    this.loginInfo = localStorage.getItem('loginInfo');
   
   }
  
@@ -142,8 +144,14 @@ export class CartCompComponent implements OnInit {
 
   } 
   onClick(){
+    if(this.loginInfo!=null){
+      this._router.navigateByUrl("/checkout");
+    } else {
+      this._router.navigateByUrl("/login");
+    }
+
     console.log("checkout");
-    this._router.navigateByUrl("/checkout");
+    
 
   } 
 }

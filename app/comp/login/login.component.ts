@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public password:String ="" ;
   public custDetail: any = {};
   public msg :String="customerdd";
+  
   constructor(private cstSrv: CustomerServiceService, private _Activatedroute:ActivatedRoute,
     private _router:Router) {
      

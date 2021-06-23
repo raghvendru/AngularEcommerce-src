@@ -10,12 +10,20 @@ import { Output, EventEmitter } from '@angular/core';
 
 })
 export class CheckoutCompComponent implements OnInit {
- 
+  public customerDetail : any = {};
  
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
+    
+    this.customerDetail = localStorage.getItem('loginInfo');
+    console.log("I m checkout page");
+    console.log(this.customerDetail);
+
+
   }
 
 }
