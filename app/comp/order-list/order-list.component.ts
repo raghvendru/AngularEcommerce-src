@@ -62,8 +62,7 @@ export class OrderListComponent implements OnInit {
       
       data => {
       console.log(data);
-      // deleting the item
-      // this.cart.push(1);
+      
       },
       error1 => {
         console.log(error1);
