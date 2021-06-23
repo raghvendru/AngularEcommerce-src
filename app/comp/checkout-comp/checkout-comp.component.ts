@@ -20,7 +20,7 @@ export class CheckoutCompComponent implements OnInit {
   ngOnInit(): void {
     
     this.customerDetail = localStorage.getItem('loginInfo');
-    console.log("I m checkout page");
+    console.log("I m checkout");
     console.log(this.customerDetail);
 
 
