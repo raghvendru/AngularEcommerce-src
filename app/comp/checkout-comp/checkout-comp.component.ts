@@ -23,6 +23,7 @@ export class CheckoutCompComponent implements OnInit {
     
     this.customerDetail = localStorage.getItem('loginInfo');
     console.log("I m checkout");
+    // console.log(this.customerDetail.loginInfo.Name);
     console.log(this.customerDetail);
 
 

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     console.log(this.phone);
     console.log(this.password);
     
-    // this._router.navigateByUrl('/checkout', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
+    this._router.navigateByUrl('/checkout');
   }
   getCustDetails() {
     // console.log("hii");
@@ -62,9 +62,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
-  
-
-
 
 }
