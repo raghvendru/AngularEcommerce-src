@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   public custDetail: any = {};
   public msg :String="customerdd";
   constructor(private cstSrv: CustomerServiceService, private _Activatedroute:ActivatedRoute,
-    private _router:Router) { }
+    private _router:Router) {
+     
+     
+
+     }
 
   ngOnInit(): void {
   }
@@ -40,7 +44,16 @@ export class LoginComponent implements OnInit {
     this.cstSrv.custAuthenticate(param).subscribe(
       data => {
        console.log(data);
-       this.custDetail = data.data;
+       this.custDetail = data;
+       let loginInfo = localStorage.getItem('loginInfo');
+
+        if ( loginInfo !=null) {
+          let obj = JSON.parse(loginInfo);
+          obj.loginInfo =  this.custDetail;
+          console.log('loginInfo:' ,JSON.parse(loginInfo));
+          localStorage.setItem("loginInfo",JSON.stringify(obj));
+        } 
+
         
       },
       error1 => {
@@ -48,4 +61,9 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  
+
+
+
 }

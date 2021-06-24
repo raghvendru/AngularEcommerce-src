@@ -1,6 +1,6 @@
 import { state } from '@angular/animations';
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { ProductListService } from 'src/app/service/product-list.service';
@@ -14,12 +14,14 @@ export class ProductListComponent implements OnInit {
   search : String = "";
   pageNum : number = 1 ;
   pageSize : number = 10;
+  public searchKey :String = "";
 
   public productlist:Array<any>=[];
 
   public id:any;
   public sub: Subscription = new Subscription ;
   public selectedItem = null;
+
 
   constructor(private productListSrv:ProductListService,private _Activatedroute:ActivatedRoute,
     private _router:Router) {
@@ -81,5 +83,25 @@ export class ProductListComponent implements OnInit {
   }
 
   
+  getSearchPage() {
+    // console.log("hii");
+    
+    let param:any= {} ;
+    param['search'] = this.searchKey;
+    param['pageNum'] = this.pageNum ;
+    param['pageSize'] = this.pageSize;
+    
+    // call the service method to fetch the data
+    this.productListSrv.getSearchPage(param).subscribe(
+      data => {
+       console.log(data);
+       this.productlist = data.data;
+        
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+  }
 
 }
