@@ -52,10 +52,10 @@ export class OrderListComponent implements OnInit {
 //              "paymenttype":"cash",
 //              "paymentstatus":"paid",
 //              "totalprice":200}
-// {"customerid":1,"addressid":2,"paymenttype":"cash","paymentstatus":"paid",
+// 
+// Query Params{"customerid":1,"addressid":2,"paymenttype":"cash","paymentstatus":"paid",
 // "totalprice":200,"orderitem":[{"productid":1,"qty":2,"price":32}]}
-// Query Params
-
+  
 
   addOrder(paramObject: any){
     this.ordSrv.addOrder(paramObject).subscribe(

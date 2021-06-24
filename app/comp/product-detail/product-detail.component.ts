@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit {
   public item:any;
   public sub: Subscription = new Subscription ;
   public quantity: number = 1;
+  public loginInfo : any ={};
 
   constructor(private _Activatedroute:ActivatedRoute,
     private _router:Router, private cartSrv:CartSrviceService) { 
@@ -34,6 +35,7 @@ export class ProductDetailComponent implements OnInit {
   // })
   
   // this.getData(this.item);
+  this.loginInfo = localStorage.getItem('loginInfo');
   }
 
   onClickItem(){
@@ -65,4 +67,17 @@ export class ProductDetailComponent implements OnInit {
       }
     );
   }
+
+
+  onClickOrder(){
+    if(this.loginInfo!=null){
+      this._router.navigateByUrl("/checkout");
+    } else {
+      this._router.navigateByUrl("/login");
+    }
+
+    
+    
+
+  } 
 }
