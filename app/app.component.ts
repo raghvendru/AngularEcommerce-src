@@ -98,5 +98,9 @@ export class AppComponent implements OnInit {
 
   }
 
+  onClickUser() {
+    this._router.navigateByUrl("/login");
+  }
+
   
 }
