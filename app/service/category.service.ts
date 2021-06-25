@@ -22,7 +22,7 @@ export class CategoryService extends BaseService {
     return this.apiSrv.getData(this.menuURL, null)
       .pipe(
         map(response => {
-          console.log(response);
+          // console.log(response);
           return response;
         }),
         catchError(ex => {

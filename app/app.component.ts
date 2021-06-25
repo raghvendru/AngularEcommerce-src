@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
      let loginInfo = localStorage.getItem('loginInfo');
      if ( loginInfo !=null) {
-       console.log('loginInfo:' ,JSON.parse(loginInfo));
+      //  console.log('loginInfo:' ,JSON.parse(loginInfo));
      } else {
        let token = this.getToken();
        let info :any = {}
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   getMenu(){
     this.categoryService.getMenu().subscribe(
       data => {
-      console.log(data);
+      // console.log(data);
       this.menu =data ;
       // this.getSubMenu(HttpParams);
       // console.log(this.list);

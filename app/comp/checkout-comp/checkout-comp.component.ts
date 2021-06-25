@@ -16,15 +16,19 @@ export class CheckoutCompComponent implements OnInit {
 
   constructor(private _Activatedroute:ActivatedRoute,
     private _router:Router) { 
+
+      this.customerDetail = localStorage.getItem('loginInfo');
+      this.customerDetail = JSON.parse(this.customerDetail);
+      // console.log("I m checkout");
+      // // console.log(this.customerDetail.loginInfo.Name);
+      // this.customerDetail.address = JSON.parse(this.customerDetail.address);
+      // console.log(this.customerDetail.address.Add1);
     
   }
 
   ngOnInit(): void {
     
-    this.customerDetail = localStorage.getItem('loginInfo');
-    console.log("I m checkout");
-    // console.log(this.customerDetail.loginInfo.Name);
-    console.log(this.customerDetail);
+   
 
 
   }

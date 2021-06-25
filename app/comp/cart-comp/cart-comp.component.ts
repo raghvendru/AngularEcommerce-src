@@ -19,6 +19,7 @@ export class CartCompComponent implements OnInit {
   public item: any;
   public loginInfo : any = {};
   
+  
   public cart:Array<any>=[];
 
   // public items:any;

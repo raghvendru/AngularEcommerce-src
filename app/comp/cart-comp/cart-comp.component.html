@@ -37,7 +37,7 @@
       <p style="width: 80%;">Price:-&nbsp;&nbsp;{{item.price}} </p>
           
       <p >Total:-&nbsp;&nbsp;{{item.price*item.qty}} </p>
-      <p>Qty:-<select id="select" name="Qty">
+      <p>Qty:-<select id="select" name="Qty" [(ngModel)] = "quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option>3</option>

@@ -46,15 +46,17 @@ export class LoginComponent implements OnInit {
       data => {
        console.log(data);
        this.custDetail = data;
-       let loginInfo = localStorage.getItem('loginInfo');
+      //  let loginInfo = localStorage.getItem('loginInfo');
 
-        if ( loginInfo !=null) {
-          let obj = JSON.parse(loginInfo);
-          obj.loginInfo =  this.custDetail;
-          console.log('loginInfo:' ,JSON.parse(loginInfo));
-          localStorage.setItem("loginInfo",JSON.stringify(obj));
-        } 
-
+        // if ( loginInfo != null) {
+        //   let obj = JSON.parse(loginInfo);
+        //   obj.loginInfo =  this.custDetail;
+        //   console.log('loginInfo:' ,JSON.parse(loginInfo));
+        //   localStorage.setItem("loginInfo",JSON.stringify(obj));
+        // } 
+        if ( this.custDetail != null) {
+          localStorage.setItem("loginInfo", JSON.stringify(this.custDetail));
+        }
         
       },
       error1 => {
