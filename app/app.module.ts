@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './comp/product-detail/product-detail.com
 import { CartCompComponent } from './comp/cart-comp/cart-comp.component';
 import { CheckoutCompComponent } from './comp/checkout-comp/checkout-comp.component';
 import { OrderListComponent } from './comp/order-list/order-list.component';
+import { ReturnCompComponent } from './comp/return-comp/return-comp.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OrderListComponent } from './comp/order-list/order-list.component';
     CartCompComponent,
     CheckoutCompComponent,
     OrderListComponent,
+    ReturnCompComponent,
     
   ],
   imports: [

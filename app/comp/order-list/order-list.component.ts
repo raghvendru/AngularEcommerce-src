@@ -1,4 +1,6 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderServiceService } from 'src/app/service/order-service.service';
 
@@ -21,7 +23,8 @@ export class OrderListComponent implements OnInit {
   public qty:number=1;
   public price:number=100;
 
-  constructor(private ordSrv: OrderServiceService) { }
+  constructor(private ordSrv: OrderServiceService,private _Activatedroute:ActivatedRoute,
+    private _router:Router) { }
 
   ngOnInit(): void {
     this.getOrderList();
@@ -73,6 +76,12 @@ export class OrderListComponent implements OnInit {
         console.log(error1);
       }
     );
+
+  }
+
+  onClickReturn(index:number){
+    // this._router.navigateByUrl("/return",{state:{orderid:this.productID.}});
+    // this._router.navigateByUrl('/return', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
 
   }
 
