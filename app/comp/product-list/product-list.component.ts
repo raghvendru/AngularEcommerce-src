@@ -11,10 +11,11 @@ import { ProductListService } from 'src/app/service/product-list.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  search : String = "";
+  // search : String = "";
   pageNum : number = 1 ;
   pageSize : number = 10;
-  public searchKey :String = "";
+  public search :any = "";
+
 
   public productlist:Array<any>=[];
 
@@ -31,11 +32,18 @@ export class ProductListComponent implements OnInit {
    ngOnInit() {
  
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
-      //  console.log(params);
-         this.id = params.get('id'); 
-          console.log(this.id);
+       console.log(params);
+         if (params.get('id') ){
+          this.id = params.get('id');
+          this.getData(this.id);
+         } else {
+          this.search = params.get('search');
+          this.getSearchPage(this.search);
+          console.log(params.get('search'));
+
+         }
+         
     });
-    this.getData(this.id);
   }
 
   // getProductList(paramsObject:any){
@@ -83,19 +91,19 @@ export class ProductListComponent implements OnInit {
   }
 
   
-  getSearchPage() {
+  getSearchPage(search:string) {
     // console.log("hii");
     
     let param:any= {} ;
-    param['search'] = this.searchKey;
-    param['pageNum'] = this.pageNum ;
-    param['pageSize'] = this.pageSize;
+    param['search'] = this.search;
+    param['page_num'] = this.pageNum ;
+    param['page_size'] = this.pageSize;
     
     // call the service method to fetch the data
     this.productListSrv.getSearchPage(param).subscribe(
       data => {
        console.log(data);
-       this.productlist = data;
+       this.productlist = data.data;
         
       },
       error1 => {

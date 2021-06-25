@@ -9,8 +9,8 @@ import { OrderServiceService } from 'src/app/service/order-service.service';
 })
 export class OrderListComponent implements OnInit {
   public pageNum: number = 1;
-  public pageSize: number = 2;
-  public customerID: number = 1;
+  public pageSize: number = 20;
+  public customerID: number = 2;
   public orderList: Array<any>=[];
   public addressID:number=2;
   public paymentType:String ="cash";
@@ -58,19 +58,7 @@ export class OrderListComponent implements OnInit {
 // "totalprice":200,"orderitem":[{"productid":1,"qty":2,"price":32}]}
   
 
-  addOrder(paramObject: any){
-    this.ordSrv.addOrder(paramObject).subscribe(
-      
-      data => {
-      console.log(data);
-      
-      },
-      error1 => {
-        console.log(error1);
-      }
-    );
-
-  }
+ 
 
   updateOrder(paramObject: any, i: number){
     this.ordSrv.updateOrder(paramObject).subscribe(

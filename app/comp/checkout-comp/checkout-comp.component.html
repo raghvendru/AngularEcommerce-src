@@ -11,23 +11,24 @@
      
       <label>
         <span>Street Address <span class="required">*</span></span>
-        <input type="text" name="houseadd" placeholder="House number and street name" required  >
+        <!-- <input type="text" name="houseadd" placeholder="House number and street name" required value = "{{address[0].Add1}}"  > -->
+        <input type="text" name="houseadd" placeholder="House number and street name" required value = "{{customerDetail.address[0].Add1}}"  >
       </label>
       <label>
         <span>&nbsp;</span>
-        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
+        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" value = "{{address[0].Add2}}">
       </label>
       <label>
         <span>Town / City <span class="required">*</span></span>
-        <input type="text" name="city"> 
+        <input type="text" name="city" value = "{{getCityName(address[0].CityID)}}"> 
       </label>
       <label>
         <span>State / County <span class="required">*</span></span>
-        <input type="text" name="city"> 
+        <input type="text" name="city" value = "{{getStateName(address[0].StateID)}}" > 
       </label>
       <label>
         <span>Postcode / ZIP <span class="required">*</span></span>
-        <input type="text" name="city"> 
+        <input type="text" name="city" value = "{{address[0].PinCode}}"> 
       </label>
       <label>
         <span>Phone <span class="required">*</span></span>
@@ -46,7 +47,8 @@
   
         <tr>
           <td>total</td>
-          <td>Rs.100000.00</td>
+          <input type="email" name="city" value = "{{getTotal()}}"> 
+          <!-- <td>{{getTotal()}}</td> -->
         </tr>
         
       </table><br>

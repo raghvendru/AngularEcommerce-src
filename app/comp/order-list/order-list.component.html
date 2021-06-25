@@ -7,9 +7,9 @@
   <div><b>Amount</b><p>Rs.1800</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <div><b>delivering date</b><p>june 15th</p></div>
 </div>
- -->
 
- <!-- <table>
+
+ <table>
   <tr>
       <th>Image</th> 
     <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -19,13 +19,13 @@
   </tr>
   <tr style="padding:15px" *ngFor="let order of orderList ;  let i = index "> 
     <td style="padding: 8px;" *ngFor="let product of order.items ; let i = index"><img class= "media image-bg" [src] = "product.imageurl" width="15%" height="100px"/></td> 
-      <!-- <tr *ngFor="let product of order.items ; let i = index"> -->
-        <!-- <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.productname}} </td> 
+       <tr *ngFor="let product of order.items ; let i = index">
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.productname}} </td> 
         <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.qty}} </td> 
         <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.totalprice}} </td> &nbsp; &nbsp; &nbsp; &nbsp; 
-        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.orderdate}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-          <!-- <input  data-id="{{col.rowIndex}}-{{col.columnIndex}}" [value]="col.cellValue" (input)="col.cellValue = $event.target.value" (click)="model.selectColumn(col)" (keyup)="navigate($event)" /> -->
-      <!-- </tr> 
+        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.orderdate}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <input  data-id="{{col.rowIndex}}-{{col.columnIndex}}" [value]="col.cellValue" (input)="col.cellValue = $event.target.value" (click)="model.selectColumn(col)" (keyup)="navigate($event)" />
+      </tr> 
       </tr>
 </table> -->
 <!-- 

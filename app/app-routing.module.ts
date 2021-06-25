@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: "orderlist", component: OrderListComponent},
   { path: "landing", component: LandingComponent},
   { path: "checkout", component: CheckoutCompComponent},
+  { path: "product/:search", component: ProductListComponent},
   // { path: '**', redirectTo: 'landing' },
 ];
 

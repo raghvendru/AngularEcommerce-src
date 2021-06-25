@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   public selectedItem = null;
   private pageSize : number = 10;
   private pageNum : number= 1;
+  public search:string="";
  
   public productList:Array<any>=[];
   
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
   constructor(private categoryService:CategoryService,private productListSrv:ProductListService,
     private _Activatedroute:ActivatedRoute,
     private _router:Router){
-
+      
      let loginInfo = localStorage.getItem('loginInfo');
      if ( loginInfo !=null) {
       //  console.log('loginInfo:' ,JSON.parse(loginInfo));
@@ -100,6 +101,11 @@ export class AppComponent implements OnInit {
 
   onClickUser() {
     this._router.navigateByUrl("/login");
+  }
+
+  onClickSearch() {
+    console.log(this.search);
+     this._router.navigateByUrl("/product/"+ this.search);
   }
 
   
