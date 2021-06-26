@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+	<!-- <app-similar (productSelected)="onSelected($event)"></app-similar> -->
   <head>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,9 +24,9 @@
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 						
-						<div class="preview-pic tab-content">
+						<div class="preview-pic tab-content" style="height: 150px;">
 						  <!-- <div class="tab-pane active" id="pic-1"><img src="\assets\Shoe.jpg" style="width:200%; height:300px" /></div> -->
-						  <div class="tab-pane active" id="pic-1"><img class= "tab-pane-img-top image-bg" [src]="item.ImageURL" style="width:200%; height:300px" /></div>
+						  <div class="tab-pane active" id="pic-1"><img class= "tab-pane-img-top image-bg" [src]="item.ImageURL" style="width:200%; height:100px" /></div>
 
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
@@ -51,11 +52,13 @@
 						
 							<!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
 							<!-- <input type="text" > -->
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<app-similar [itemInput] = "item"></app-similar>
 	</div>
   </body>
 </html>

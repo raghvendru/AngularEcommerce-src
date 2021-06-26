@@ -43,7 +43,9 @@ body {
         margin-right: 0; }
   
   .tab-content {
-    overflow: hidden; }
+    overflow: hidden; 
+    height: 250px;
+  }
     .tab-content img {
       width: 100%;
       -webkit-animation-name: opacity;

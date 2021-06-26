@@ -12,6 +12,7 @@ export class ProductListService extends BaseService {
 
   private productListUrl = 'product/product-by-sub-cat';
   private searchPageUrl = 'product/product-by-search';
+  private similarProductUrl = 'product/get-similar-product';
 
   constructor(private apiSrv:ApiService) {
     super(apiSrv);
@@ -44,6 +45,20 @@ export class ProductListService extends BaseService {
   getSearchPage(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this.searchPageUrl,paramsObject )
+      .pipe(
+        map(response => {
+          console.log(response);
+          return response;
+        }),
+        catchError(ex => {
+          return ex;
+        })
+      );
+  }
+
+  getSimilarProduct(paramsObject:any) : Observable<any> {
+    console.log(paramsObject);
+    return this.apiSrv.getData(this.similarProductUrl,paramsObject )
       .pipe(
         map(response => {
           console.log(response);

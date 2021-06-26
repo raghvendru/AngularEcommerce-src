@@ -8,6 +8,7 @@ import { OrderListComponent } from './comp/order-list/order-list.component';
 import { ProductDetailComponent } from './comp/product-detail/product-detail.component';
 import { ProductListComponent } from './comp/product-list/product-list.component';
 import { ReturnCompComponent } from './comp/return-comp/return-comp.component';
+import { ReturnListComponent } from './comp/return-list/return-list.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "checkout", component: CheckoutCompComponent},
   { path: "return", component: ReturnCompComponent},
   { path: "product/:search", component: ProductListComponent},
+  { path: "returnlist",component:ReturnListComponent}
   // { path: '**', redirectTo: 'landing' },
 ];
 

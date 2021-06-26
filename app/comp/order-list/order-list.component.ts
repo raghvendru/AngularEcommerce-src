@@ -79,7 +79,9 @@ export class OrderListComponent implements OnInit {
 
   }
 
-  onClickReturn(index:number){
+  onClickReturn(product:any){
+    console.log(product);
+    this._router.navigateByUrl("/return",{ state: { orderid:product.orderid , Name:product.productname, imageurl:product.imageurl, qty:product.qty, Price:product.price, description:product.description,brandName:product.brandname,orderitemid:product.orderitemid,productid:product.productid } });
     // this._router.navigateByUrl("/return",{state:{orderid:this.productID.}});
     // this._router.navigateByUrl('/return', { state: { ProductID:item.ProductID , Name:item.Name, BrandID:item.BrandID, Description:item.Description, ImageURL:item.ImageURL, Price:item.Price, SubCategoryID:item.SubCategoryID, SubCategoryName:item.SubCategoryName, SubCategoryDesc:item.SubCategoryDesc, SubCategoryImage:item.SubCategoryImage, BrandName:item.BrandName } });
 

@@ -13,6 +13,8 @@ import { CartCompComponent } from './comp/cart-comp/cart-comp.component';
 import { CheckoutCompComponent } from './comp/checkout-comp/checkout-comp.component';
 import { OrderListComponent } from './comp/order-list/order-list.component';
 import { ReturnCompComponent } from './comp/return-comp/return-comp.component';
+import { ReturnListComponent } from './comp/return-list/return-list.component';
+import { SimilarComponent } from './comp/similar/similar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ReturnCompComponent } from './comp/return-comp/return-comp.component';
     CheckoutCompComponent,
     OrderListComponent,
     ReturnCompComponent,
+    ReturnListComponent,
+    SimilarComponent,
     
   ],
   imports: [

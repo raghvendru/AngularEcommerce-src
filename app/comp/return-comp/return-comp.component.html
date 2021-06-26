@@ -1,21 +1,40 @@
-<p>return-comp works!</p>
+<!-- <p>return-comp works!</p> -->
 
-<!-- <div class="row " *ngFor="let order of orderList ;  let i = index ">
-
-    <div class="card col-12" *ngFor="let product of order.items ; let i = index">
-      <div class="col-2">
-        
-     <div class="im" ><img [src] = "product.imageurl"   alt="Avatar" style="width:auto; height: 110px;"></div>
-      </div>
-      <div class="col-10">
-      <p style="width: 80%;">Product:-&nbsp;&nbsp;{{product.productname}} </p>
-      <p style="width: 80%;">Product:-&nbsp;&nbsp;{{product.productname}} </p>
-      <p >Quantity:-&nbsp;&nbsp;{{product.qty}}</p>
-      <p>Date:- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.orderdate}} </p>
-
-      <button type="button"  (click)="onClickReturn(i)">
-        Return 
-    </button> 
+<div class="box" >
+    <div>
+        <div >
+        <img src="" >
+        ProductName
+        <input type="text" name = "name" value = "{{order.Name}}"><br>
     </div>
+    <br><br>
+    <div>
+        price
+        <input type="text" value = "{{order.Price}}">
+        Reason
+        <input type="text" name = "name" [(ngModel)] = "reason">
+
     </div>
-    </div> -->
+        <br><br>
+        qty
+        <select>
+        <option>1</option>
+        <option>2</option>
+        </select>
+    </div>
+            <br><br>
+</div>
+<br><br>
+<div class="box" >
+    <div>
+        <div >
+        <p><b>Refund method</b></p><br><br>
+        <input type="radio">Add to Wallet<br>
+        <input type="radio">Add to Bank<br>	<br>
+        Returndate<input type="date">
+    </div>
+    <br>
+    <button style="float:right ;" (click) = "onClickConfirm()">Confirm Return</button>
+    <br><br>
+    </div>
+</div><br><br>

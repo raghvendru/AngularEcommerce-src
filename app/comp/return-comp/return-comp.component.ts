@@ -7,13 +7,20 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./return-comp.component.css']
 })
 export class ReturnCompComponent implements OnInit {
-public item : any={};
+public order : any={};
+public reason:string ="";
   constructor(private _Activatedroute:ActivatedRoute,
     private _router:Router) { 
-    // this.item = this._router.getCurrentNavigation()?.extras.;
+      this.order = this._router.getCurrentNavigation()?.extras.state;
+      console.log("hii");
+      console.log(this.order);
   }
 
   ngOnInit(): void {
+  }
+
+  onClickConfirm(){
+    this._router.navigateByUrl('/landing');
   }
 
 }
