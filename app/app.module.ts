@@ -15,6 +15,7 @@ import { OrderListComponent } from './comp/order-list/order-list.component';
 import { ReturnCompComponent } from './comp/return-comp/return-comp.component';
 import { ReturnListComponent } from './comp/return-list/return-list.component';
 import { SimilarComponent } from './comp/similar/similar.component';
+import { SubCategoryComponent } from './comp/sub-category/sub-category.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SimilarComponent } from './comp/similar/similar.component';
     ReturnCompComponent,
     ReturnListComponent,
     SimilarComponent,
+    SubCategoryComponent,
     
   ],
   imports: [

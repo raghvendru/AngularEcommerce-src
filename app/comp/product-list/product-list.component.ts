@@ -51,6 +51,7 @@ export class ProductListComponent implements OnInit {
   //     data => {
   //     console.log(data);
   //     this.productlist =data ;
+ 
   //     this.getProductList(HttpParams);
   //     console.log(this.getProductList);
   //     },

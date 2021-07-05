@@ -18,11 +18,11 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 1rem;
+  padding: 5%;
 }
 
 .main{
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 

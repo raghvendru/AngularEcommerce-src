@@ -8,63 +8,36 @@
       
   </div>
 <br>
-  <div class="main">
+  <div class="main" (click)="onClickItem()" *ngFor="let item of menu ;  let i = index">
     <ul class="cards">
       <li class="cards_item">
         <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://www.bajajfinserv.in/Vijay_Sales_banner_image_Vijay-Sales_Store_Page_Banner_1440x650px_v2.jpg"></div>
-          <div class="card_content">
-            <h2 class="card_title">Home Appliances</h2>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://blog.grabon.in/wp-content/uploads/2015/05/Buy-Furniture-Online.jpg"></div>
-          <div class="card_content">
-            <h2 class="card_title">Furniture</h2>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item" >
-        <div class="card">
-          <div class="card_image" ><img style="height: 198px;width: 450px;" src="https://sellbae.com/wp-content/uploads/2020/11/shopping-electronic-items-3.jpg"></div>
-          <div class="card_content">
-            <h2 class="card_title">Electronics</h2>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item" >
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC4mnylZrbq_gs0mB_p9tdZFKx6fZG-3muXA&usqp=CAU"></div>
-          <div class="card_content">
-            <h2 class="card_title">Cosmetics</h2>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2EjgCC_isJeX460XYDJe9Pn85i2yv5c60ZHT4dVqnTNFN28L5mFJiQcIwg7u4KvQpuO8&usqp=CAU"></div>
-          <div class="card_content">
-            <h2 class="card_title">Fashion</h2>
-          </div>
-        </div>
-      </li>
-   
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="\assets\groceries.jpg" ></div>
-          <div class="card_content">
-            <h2 class="card_title">Groceries</h2>
-          </div>
+          <div class="card_image"  ><img style="height: 198px;width: 450px;"  src="item.ImageURL"></div>
         </div>
       </li>
       <!-- <li class="cards_item">
         <div class="card">
-          <div class="card_image"><img style="width: 150px; height:200px;" src="\assets\med.jpg" ></div>
-          <div class="card_content">
-            <h2 class="card_title">Medical</h2>
-          </div>
+          <div class="card_image"  ><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/038fd72f-19c7-4853-b75c-4d1dbb314e121625121368437-eors-top-nav_04.jpg"></div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/9a565caa-57dc-47aa-9a55-1c984270c9ff1625121368431-eors-top-nav_02.jpg"></div>
+        </div>
+      </li>
+      <li class="cards_item" >
+        <div class="card">
+          <div class="card_image" ><img style="height: 198px;width: 450px;" src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/retaillabs/2021/7/5/256a768e-2bb1-489e-ad0c-0caad44e9d731625425405541-offers-copy-6.jpg"></div>
+        </div>
+      </li>
+      <li class="cards_item" >
+        <div class="card">
+          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/retaillabs/2021/7/3/0bda9a71-e6a2-4a42-abd8-e1c60db93fac1625310426319-eors-top-nav-2_08.jpg"></div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/4fc92aa2-9987-4d79-b8d4-9e09b17332c61625121368463-eors-top-nav_10.jpg"></div>
         </div>
       </li> -->
     </ul>
