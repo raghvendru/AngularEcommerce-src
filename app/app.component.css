@@ -239,6 +239,8 @@ a:hover{
 
 .navbar navbar-inverse{
   max-width: 1280px;
+  background: #0c0c0c;
+  background-color:#0c0c0c;
 }
 
 .topnav .search-container button {
@@ -307,7 +309,7 @@ span:hover{
   z-index: 1;
 }
 a:hover{
-  border-style: solid 1px white ;
+  border-style:  white ;
   background-color: #d8ff2b;
   color: #ffae00;
   
@@ -433,7 +435,7 @@ a:hover{
   font-size: 0.65em;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
+  color: #ffffff;
   font-family: arial;
   text-decoration: none;
   position: absolute;
@@ -502,6 +504,18 @@ a:hover{
   flex: 0 0 auto;
   margin: 5px;
   width: calc(40% - 10px);
+}
+
+.color{
+  color: #ffffff;
+}
+
+.color:hover{
+  background-color: #ffae00;
+
+}
+.dropdown-toggle {
+  width: 200px;
 }
 
 /* div {

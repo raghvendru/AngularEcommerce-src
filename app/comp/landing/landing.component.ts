@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/service/category.service';
 
@@ -11,6 +11,8 @@ export class LandingComponent implements OnInit {
   public selectedItem = null;
   public category:Array<any>=[];
   public menu:Array<any>=[];
+  pageNum : number = 1 ;
+  pageSize : number = 10;
 
 
   constructor(private _router:Router,private categoryService:CategoryService) { }
@@ -19,7 +21,10 @@ export class LandingComponent implements OnInit {
     this.getMenu();
   }
 
+
+
   getMenu(){
+
     this.categoryService.getMenu().subscribe(
       data => {
       // console.log(data);
@@ -34,9 +39,14 @@ export class LandingComponent implements OnInit {
   
   }
 
-  onClickItem(){
+  getSubCategory(cat: number) {
+    
+  }
+
+  onClickItem(catid: number){
     // this.selectedItem = item;
-    this._router.navigateByUrl("/subCategory");
+    console.log(catid);
+    this._router.navigateByUrl("/subCategory",{state : {id: catid}});
     
   }
 

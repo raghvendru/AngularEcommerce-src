@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/service/category.service';
 import { ProductListService } from 'src/app/service/product-list.service';
@@ -9,31 +9,27 @@ import { ProductListService } from 'src/app/service/product-list.service';
   styleUrls: ['./sub-category.component.css']
 })
 export class SubCategoryComponent implements OnInit {
-  public menu:Array<any>=[];
+  public subCatList:Array<any>=[];
+  @Input() itemInput :any = null;
+  public CategoryID = 1;
+  public pageNum : number = 1;
+  public pageSize : number = 10;
+  public param : any ;
 
-  constructor(private categoryService:CategoryService,private productListSrv:ProductListService,
-    private _Activatedroute:ActivatedRoute,
-    private _router:Router) {
-      
-     }
+  constructor(private categoryService:CategoryService,
+    private _router:Router) {     
+      this.param = this._router.getCurrentNavigation()?.extras.state;
+      console.log(this.param) ;
+      console.log(this.param.id) ;
+      this.CategoryID =  this.param.id ;
+  }
 
   ngOnInit(): void {
-    this.getMenu();
+    console.log(this.categoryService.getSubCategory(this.CategoryID));
+    this.subCatList = this.categoryService.getSubCategory(this.CategoryID).SubCategories;
+    console.log(this.subCatList);
   }
 
-  getMenu(){
-    this.categoryService.getMenu().subscribe(
-      data => {
-      // console.log(data);
-      this.menu =data ;
-      // this.getSubMenu(HttpParams);
-      // console.log(this.list);
-      },
-      error1 => {
-        console.log(error1);
-      }
-    );
   
-  }
 
 }

@@ -31,18 +31,19 @@
 
  -->
 
- <nav class="navbar navbar-inverse" >
+ <nav class="navbar navbar-inverse" style="background-color: #0c0c0c;" >
   <div class="container-fluid" >
     <div class="navbar-header" >
-      <a class="navbar-brand" href="#">U-Shop</a>
+      <!-- <a class="navbar-brand" img [src]=C:\Users\Srinivas\desktop\eCommerce\src\assets\Student_Shop_Logo.png></a> -->
+      <a href="#"><img src="\assets\Student_Shop_Logo (1).png" style="width: 260px;; height:50px" /></a>
     </div>
     <ul class="nav navbar-nav" >
-      <li class="active"  ><a (click) = "onClickHome()">Home</a></li>
+      <li class="color" style="padding: 15px;" (click) = "onClickHome()">Home</li>
       <div class="dropdown"  (click)="rel()" *ngFor="let item of menu ;  let i = index  ">
-        <span>{{item.Name}}</span>
+        <span class="color">{{item.Name}}</span>
         <div class="dropdown-content">
           <a  *ngFor="let sub of item.SubCategories ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]">
-          <p  class="dropdown-toggle "  data-toggle="dropdown" href="#">{{sub.Name}}</p></a>
+          <p  class="dropdown-toggle "  data-toggle="dropdown" onmousedown="if(length>10){size=10}" href="#">{{sub.Name}}</p></a>
         </div>
       </div>
     </ul>

@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
         //   localStorage.setItem("loginInfo",JSON.stringify(obj));
         // } 
         if ( this.custDetail != null) {
+            let loginInfo = localStorage.getItem('loginInfo');
           localStorage.setItem("loginInfo", JSON.stringify(this.custDetail));
         }
         
@@ -66,3 +67,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+

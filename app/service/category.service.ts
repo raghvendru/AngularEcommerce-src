@@ -11,7 +11,7 @@ import { BaseService } from './base.service';
 export class CategoryService extends BaseService {
 
   private menuURL = 'menu/get-menu';
-  
+  private menuObj :any ;
 
   constructor(private apiSrv: ApiService) {
     super(apiSrv);
@@ -22,7 +22,8 @@ export class CategoryService extends BaseService {
     return this.apiSrv.getData(this.menuURL, null)
       .pipe(
         map(response => {
-          // console.log(response);
+          console.log(response);
+          this.menuObj= response;
           return response;
         }),
         catchError(ex => {
@@ -31,7 +32,18 @@ export class CategoryService extends BaseService {
       );
  }
 
-
-
+ getSubCategory(cat : number) : any {
+  console.log(cat);
+  console.log(this.menuObj);
+  let obj = null ;
+  for (const menu of this.menuObj) {
+    if (menu.CategoryID == cat ) {
+      obj = menu ;
+      break ;
+    }
+  }
+  return obj;
+ }
  
 }
+
