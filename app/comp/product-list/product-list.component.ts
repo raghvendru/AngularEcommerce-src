@@ -13,7 +13,7 @@ import { ProductListService } from 'src/app/service/product-list.service';
 export class ProductListComponent implements OnInit {
   // search : String = "";
   pageNum : number = 1 ;
-  pageSize : number = 10;
+  pageSize : number = 50;
   public search :any = "";
 
 

@@ -30,23 +30,32 @@
 
 
  -->
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <nav class="navbar navbar-inverse" style="background-color: #0c0c0c;" >
   <div class="container-fluid" >
     <div class="navbar-header" >
-      <!-- <a class="navbar-brand" img [src]=C:\Users\Srinivas\desktop\eCommerce\src\assets\Student_Shop_Logo.png></a> -->
+
       <a href="#"><img src="\assets\Student_Shop_Logo (1).png" style="width: 260px;; height:50px" /></a>
     </div>
-    <ul class="nav navbar-nav" >
+    <div class="sub-menu" >
+    <div class="nav navbar-nav" >
       <li class="color" style="padding: 15px;" (click) = "onClickHome()">Home</li>
-      <div class="dropdown"  (click)="rel()" *ngFor="let item of menu ;  let i = index  ">
-        <span class="color">{{item.Name}}</span>
-        <div class="dropdown-content">
-          <a  *ngFor="let sub of item.SubCategories ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]">
-          <p  class="dropdown-toggle "  data-toggle="dropdown" onmousedown="if(length>10){size=10}" href="#">{{sub.Name}}</p></a>
-        </div>
+      <div class="sub-menu-nav"  (click)="rel()" *ngFor="let item of menu  ;  let i = index  ">
+    <button class="nav-btn color">{{item.Name}}</button>
+    <div class="sub-menu-alt">
+      <a *ngFor="let sub of item.SubCategories  ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]" href="#">
+       {{sub.Name}}</a>
+    </div>
+ 
+  
+        <!-- <div class="dropdown-content">
+          <span  *ngFor="let sub of item.SubCategories  ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]">
+          <span  class="dropdown-toggle "  data-toggle="dropdown"  href="#"><b style="color: #0c0c0c;">{{sub.Name}}</b></span></span>
+        </div> -->
       </div>
-    </ul>
+    </div>
+  </div>
+
     <div class="search-container" style="float: right; margin-top: 10px;">
       <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 5px; font-size: 30px;float: right;" (click) = "onClickCart()"></i>
       <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 5px; font-size: 30px;float:right;" (click) = "onClickUser()"></i>
@@ -57,6 +66,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 </nav>
 <router-outlet></router-outlet>
-<div class="footer" style="height: 20px;">
-  <p>About Us</p>
-</div>
+<div class="footer">
+  <p><a rel="dofollow" target="_blank">About Us</a></p>
+</div>>
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+<!-- Start Field -->
+
+<!-- <div class="sub-menu" >
+  <a class="active" href="#">Home</a>
+  <div class="sub-menu-nav"  (click)="rel()" *ngFor="let item of menu  ;  let i = index  ">
+    <button class="nav-btn color">{{item.Name}}</button>
+    <div class="sub-menu-alt">
+      <a *ngFor="let sub of item.SubCategories  ; let i=index">
+
+       <b [routerLink]="['/productlist', sub.SubCategoryID ]">{{sub.Name}}</b></a>
+      <a href="#">Team</a>
+      <a href="#">References</a>
+    </div>
+  </div> 
+</div> -->
+
+
+<!-- End Field -->
+
+<!-- <div class="footer">
+  <p>design by <a rel="dofollow" target="_blank" href="https://bugra.work">bugra.work</a></p>
+</div> -->

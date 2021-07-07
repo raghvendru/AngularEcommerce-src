@@ -101,11 +101,11 @@ border-radius: 10px;
   float: right;
 }
 
+border: none;
 .topnav input[type=text] {
   padding: 6px;
   margin-top: 10px;
   font-size: 17px;
-  border: none;
 }
 
 
@@ -289,7 +289,6 @@ span:hover{
   padding-top: 15px;
   border-style: solid 1px rgb(145, 255, 0) ;
   position: relative;
-
   display: inline-block;
 }
 .dropdown:hover{
@@ -512,6 +511,7 @@ a:hover{
 
 .color:hover{
   background-color: #ffae00;
+  color: #0c0c0c;
 
 }
 .dropdown-toggle {
@@ -521,3 +521,140 @@ a:hover{
 /* div {
   white-space: normal;
 } */
+
+
+
+
+/*
+Codepen css starts
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,300&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 120vh;
+  background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #2c3e50     74%);
+}
+
+h2 {
+  font-size: 42px;
+  color: #F1F1F1;
+  text-align: center;
+}
+
+/* Start Field */
+
+.sub-menu {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* overflow: hidden; */
+}
+
+.sub-menu a {
+  float: left;
+  font-size: 16px;
+  min-width: 90px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: all .5s;
+}
+
+.active {
+  background: #2C3E50;
+}
+
+.sub-menu-nav {
+  float: left;
+  overflow: hidden;
+}
+
+.sub-menu-nav .nav-btn {
+  cursor:pointer;
+  min-width: 120px;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  transition: all .5s;
+}
+
+.sub-menu a:hover, .sub-menu-nav:hover .nav-btn {
+  background-color: #ffae00;
+}
+
+.sub-menu-alt {
+  display: none;
+  position: absolute;
+  background-color: #2C3E50;
+  z-index: 1;
+}
+
+.sub-menu-alt a {
+  min-width: 90px;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.sub-menu-alt a:hover {
+  background-color: #eee;
+  color: #000;
+}
+
+.sub-menu-nav:hover .sub-menu-alt {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .sub-menu {
+      flex-direction: column;
+  }
+  .sub-menu-nav {
+    text-align:center;
+    width:100%;
+  }
+  .nav-btn {
+    width:100%;
+  }
+}
+
+
+/* End Field */
+
+.footer {
+  position:fixed;
+  bottom:5px;
+}
+
+.footer p {
+  font-family: 'Montserrat', sans-serif;
+  font-size:12px;
+  color:gray;
+  
+}
+
+.footer a {
+  color: #fff;
+  transition: all .4s;
+}
+
+.footer a:hover {
+  color: #eaeaeb;
+}
+
+
+
+.sub-menu-nav[_ngcontent-kie-c61] .nav-btn[_ngcontent-kie-c61] {
+  color: #2c3e50  !important;
+}
+/* codepen code ends */

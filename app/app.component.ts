@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'shopping';
   public menu:Array<any>=[];
   public selectedItem = null;
-  private pageSize : number = 10;
+  private pageSize : number = 50;
   private pageNum : number= 1;
   public search:string="";
  

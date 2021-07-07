@@ -118,3 +118,28 @@ img {
   margin-top: 35px;
   text-align: center;
 }
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.col-12 {height: 10%; width: 15%; margin-left: 35px; min-width: 233px;}
+  .col-10 {height: 10%; width: 20%;}
+
+.container {
+  /* margin: 10px; */
+  padding: 10px 1px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
