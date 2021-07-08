@@ -6,17 +6,17 @@
     <form action="" method="">
       <label>
         <span class="fname">Name <span class="required">*</span></span>
-        <input type="text" name="fname" value = "{{customerDetail.Name}}" >
+        <input type="text" name="fname" [(ngModel)] = "customerDetail.Name" >
       </label>
      
       <label>
         <span>Street Address <span class="required">*</span></span>
         <!-- <input type="text" name="houseadd" placeholder="House number and street name" required value = "{{address[0].Add1}}"  > -->
-        <input type="text" name="houseadd" placeholder="House number and street name" required value = "{{customerDetail.address[0].Add1}}"  >
+        <input type="text" name="houseadd" placeholder="House number and street name" [(ngModel)] = "customerDetail.address[0].Add1"  >
       </label>
       <label>
         <span>&nbsp;</span>
-        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" value = "{{address[0].Add2}}">
+        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" [(ngModel)] = "customerDetail.address[0].Add2">
       </label>
       <label>
         <span>Town / City <span class="required">*</span></span>
@@ -24,19 +24,19 @@
       </label>
       <label>
         <span>State / County <span class="required">*</span></span>
-        <input type="text" name="city" value = "{{getStateName(address[0].StateID)}}" > 
+        <input type="text" name="State" value = "{{getStateName(address[0].StateID)}}" > 
       </label>
       <label>
         <span>Postcode / ZIP <span class="required">*</span></span>
-        <input type="text" name="city" value = "{{address[0].PinCode}}"> 
+        <input type="text" name="PinCode" [(ngModel)] = "customerDetail.address[0].PinCode"> 
       </label>
       <label>
         <span>Phone <span class="required">*</span></span>
-        <input type="tel" name="city" value = "{{customerDetail.Phone}}"> 
+        <input type="tel" name="Phone" [(ngModel)] = "customerDetail.Phone"> 
       </label>
       <label>
         <span>Email Address <span class="required">*</span></span>
-        <input type="email" name="city" value = "{{customerDetail.Email}}"> 
+        <input type="email" name="Email" [(ngModel)] = "customerDetail.Email"> 
       </label>
     </form>
     <div class="Yorder">

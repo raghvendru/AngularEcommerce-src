@@ -48,6 +48,8 @@ export class CheckoutCompComponent implements OnInit {
   }
   onClickPlace(){
     this.addOrder();
+    console.log("checkout");
+    console.log(this.customerDetail);
     this._router.navigateByUrl("/landing");
 
   }
