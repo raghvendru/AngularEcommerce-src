@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerServiceService } from 'src/app/service/customer-service.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,33 +10,33 @@ import { CustomerServiceService } from 'src/app/service/customer-service.service
 export class LoginComponent implements OnInit {
 
   public phone: any;
-  private sessionid: String = "1234";
   public password:String ="" ;
   public custDetail: any = {};
-  public msg :String="customerdd";
+  public cartInfo : any = [];
+  public sessionInfo:any = {};
   
   constructor(private cstSrv: CustomerServiceService, private _Activatedroute:ActivatedRoute,
     private _router:Router) {
-     
-     
-
      }
 
   ngOnInit(): void {
+    this.sessionInfo = localStorage.getItem('sessionID');
+    this.sessionInfo  = JSON.parse(this.sessionInfo );
   }
   
   onClick(){
     this.getCustDetails();
-    console.log("variables ---");
-    console.log(this.phone);
-    console.log(this.password);
-    
-    this._router.navigateByUrl('/checkout');
+    this.cartInfo = localStorage.getItem('cartInfo');
+    if (this.cartInfo == null) {
+      this._router.navigateByUrl('/landing');
+    } else {
+      this._router.navigateByUrl('/checkout');
+    }
   }
   getCustDetails() {
-    // console.log("hii");
     let param:any= {} ;
-    param['session_id'] = this.sessionid;
+   
+    param['session_id'] = this.sessionInfo.sessionID;
     param['phone_num'] = this.phone ;
     param['password'] = this.password;
 
@@ -46,17 +45,13 @@ export class LoginComponent implements OnInit {
       data => {
        console.log(data);
        this.custDetail = data;
-      //  let loginInfo = localStorage.getItem('loginInfo');
-
-        // if ( loginInfo != null) {
-        //   let obj = JSON.parse(loginInfo);
-        //   obj.loginInfo =  this.custDetail;
-        //   console.log('loginInfo:' ,JSON.parse(loginInfo));
-        //   localStorage.setItem("loginInfo",JSON.stringify(obj));
-        // } 
         if ( this.custDetail != null) {
-            let loginInfo = localStorage.getItem('loginInfo');
+          let loginInfo = localStorage.getItem('loginInfo');
           localStorage.setItem("loginInfo", JSON.stringify(this.custDetail));
+          alert('login successful');
+        }  else {
+          alert('invalid Credentials');
+          this._router.navigateByUrl("/login");
         }
         
       },
@@ -65,6 +60,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }
 

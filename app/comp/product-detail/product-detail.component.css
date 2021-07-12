@@ -1,6 +1,4 @@
 
-/*****************globals*************/
-/*****************globals*************/
 body {
   font-family: 'open sans';
   overflow-x: hidden; }
@@ -53,7 +51,7 @@ img {
             animation-duration: .3s; }
 
 .card {
-  margin-top: 50px;
+  margin-top: 10px;
   background: #ffffff;
   padding: 3em;
   line-height: 1.5em; }

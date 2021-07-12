@@ -32,13 +32,11 @@ export class OrderServiceService extends BaseService {
  }
 
  addOrder(paramObject: any) : Observable<any> {
-
-  console.log(paramObject);
   return this.apiSrv.postData(this.addorderURL, this.json_key, paramObject)
     .pipe(
       map(response => {
-        console.log("serviceresponse");
         console.log(response);
+        localStorage.removeItem("cartInfo");
         return response;
       }),
       catchError(ex => {
@@ -46,20 +44,4 @@ export class OrderServiceService extends BaseService {
       })
     );
   }
-  
-  updateOrder(paramObject: any) : Observable<any> {
-
-    console.log(paramObject);
-    return this.apiSrv.postData(this.addorderURL, this.json_key, paramObject)
-      .pipe(
-        map(response => {
-          console.log("serviceresponse");
-          console.log(response);
-          return response;
-        }),
-        catchError(ex => {
-          return ex;
-        })
-      );
-    }
 }

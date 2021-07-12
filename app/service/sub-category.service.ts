@@ -19,7 +19,6 @@ export class SubCategoryService extends BaseService {
     return this.apiSrv.getData(this.submenuURL, null)
       .pipe(
         map(response => {
-          // console.log(response);
           return response;
         }),
         catchError(ex => {

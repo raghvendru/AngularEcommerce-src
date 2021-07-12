@@ -1,3 +1,20 @@
+/* 
+ * Fuctionality: this page shows the cart list items which the user had put the products in cart.
+ * 
+ * Entry Point: Entry is from the product detail page.
+ * 
+ * What data you need: the data of the products which are in the cart
+ * 
+ * How do you get data: we get data .
+ * 
+ * Important Variable: 
+ * 
+ * Structure of data (object / json)
+ * 
+ * Out Navigation
+ * 
+ * 
+ */
 import { HttpParams } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
@@ -12,19 +29,18 @@ import { CartSrviceService } from 'src/app/service/cart-srvice.service';
 })
 export class CartCompComponent implements OnInit {
 
-  sessionid : String = "1234" ;
+  sessionInfo : any = {};
   customerid : number = 1 ;
   public selectedItem = null;
-  public quantity: any;
+  public quantity: number = 1;
   public item: any;
   public loginInfo : any = {};
+  public cartItems  : any = [];
+  public totalPrice : number = 0;
+ 
   
   
-  public cart:Array<any>=[];
-
-  // public items:any;
-  // public sub: Subscription = new Subscription ;
-  // public selectedItem = null;
+  public cart: any = []; 
 
   /*
     this component get activated by clicking cart icon or checkout page
@@ -39,26 +55,38 @@ export class CartCompComponent implements OnInit {
 
     constructor(private cartSrv:CartSrviceService, private _Activatedroute:ActivatedRoute,
       private _router:Router){
-        
+        this.cartItems  = localStorage.getItem('cartInfo');
+        this.cartItems  = JSON.parse(this.cartItems );
       }
     
   ngOnInit(): void {
-    this.getCart();
-    this.loginInfo = localStorage.getItem('loginInfo');
   
+    this.getCart();
+    // this.cart = localStorage.getItem('cartInfo');
+    // this.cart  = JSON.parse(this.cart);
   }
  
   
-  getCart(){
-    let param:any= {} ;
-    param['sessionid'] = this.sessionid ;
-    param['customerid'] = this.customerid;
+  getCart() {
+    let param:any= {};
+    this.loginInfo = localStorage.getItem('loginInfo');
+    this.loginInfo = JSON.parse(this.loginInfo);
+    this.sessionInfo = localStorage.getItem('sessionID');
+    this.sessionInfo  = JSON.parse(this.sessionInfo );
+    param['sessionid'] = this.sessionInfo.sessionID ;
+    console.log(this.loginInfo);
+    console.log(this.loginInfo.CustomerID );
+    if (this.loginInfo.CustomerID == undefined) {
+      param['customerid'] = -1;
+    } else {
+      param['customerid'] = this.loginInfo.CustomerID;
+    }
+   
     console.log("getcart");
-    // this.cartSrv.getCart(param).subscribe
     this.cartSrv.getCart(param).subscribe(
       data => {
       console.log(data);
-      this.cart =data.items ;
+      this.cart = data.items ;
       console.log(this.cart);
       },
       error1 => {
@@ -68,13 +96,16 @@ export class CartCompComponent implements OnInit {
 
   }
 
-  deleteCartItem(paramObject: any, i: number){
+  deleteCartItem(paramObject: any, i: number) {
+    this.totalPrice = this.totalPrice - (this.cart[i].price);
+    console.log(this.totalPrice);
     this.cartSrv.deleteCartItem(paramObject).subscribe(
       
       data => {
       console.log(data);
+      console.log(this.cart[i].price);
       // deleting the item
-      this.cart.splice(i, 1);
+       this.cart.splice(i, 1);
       },
       error1 => {
         console.log(error1);
@@ -83,8 +114,7 @@ export class CartCompComponent implements OnInit {
 
   }
 
-  onClickItem(i: number){
-    // this.selectedIte = c;
+  onClickItem(i: number) {
     let param:any= {} ;
     param['cartid'] = this.cart[i].cartid ;
     param['productid'] = this.cart[i].productid;
@@ -93,50 +123,31 @@ export class CartCompComponent implements OnInit {
     /*
       call the cart service.delete method cart id and product id  
     */
-    // this._router.navigateByUrl('/productdetail', { state: { ProductID:item.ProductID } });
   }
 
-  clickingText(i: number){
-    // this.selectedIte = c;
+  onClickUpdate(i: number) {
     console.log("clicking text");
     let param:any= {} ;
     param['cartitem_id'] = this.cart[i].cartitemid ;
-    param['qty'] = this.quantity;
+    param['qty'] = this.cart[i].qty;
     this.updateCartItem(param, i);
   }
 
   
   /*
  add to cart
- create addcart item parameters are sessionid, customerid, cartitem: productid, quantity and price
- onClick add to cart call the api service 
+  create addcart item parameters are sessionid, customerid, cartitem: productid, quantity and price
+  onClick add to cart call the api service 
   onClick addtocart the carticon the number needs to be incremented  
-
  */
-
-  addCartItem(paramObject: any){
-    this.cartSrv.addCartItem(paramObject).subscribe(
-      
-      data => {
-      console.log(data);
-      // deleting the item
-      // this.cart.push(1);
-      },
-      error1 => {
-        console.log(error1);
-      }
-    );
-
-  }
+  /* deleting the item*/
+ 
 
   updateCartItem(paramObject: any, i: number){
     this.cartSrv.updateCartItem(paramObject).subscribe(
       
       data => {
       console.log(data);
-      // this.cart[i].qty
-      // updating the item
-
       },
       error1 => {
         console.log(error1);
@@ -145,14 +156,23 @@ export class CartCompComponent implements OnInit {
 
   } 
   onClick(){
-    if(this.loginInfo!=null){
-      this._router.navigateByUrl("/checkout");
+    if(this.loginInfo!=null) {
+   
+      this._router.navigateByUrl("/checkout",{state : {totalPrice: this.totalPrice}});
     } else {
       this._router.navigateByUrl("/login");
     }
 
     console.log("checkout");
-    
-
   } 
+
+  getTotal():number {
+    this.totalPrice = 0;
+    console.log(this.cartItems);
+    for(var t of this.cartItems ) {
+      this.totalPrice = this.totalPrice +((t.qty)*(t.price));
+    }
+    console.log(this.totalPrice);
+    return this.totalPrice;
+  }
 }

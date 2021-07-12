@@ -16,6 +16,7 @@ export class CartSrviceService extends BaseService{
   private json_key = 'cart_json';
   private addURL = 'cart/add';
   private updateURL = 'cart/update-item';
+  public cartInfo : any =[];
 
   constructor(private apiSrv: ApiService) {
     super(apiSrv);
@@ -55,8 +56,6 @@ export class CartSrviceService extends BaseService{
 } 
 
 updateCartItem(paramObject: any) : Observable<any> {
-  console.log("cart service****");
-  console.log(paramObject);
   return this.apiSrv.postData(this.updateURL, this.json_key, paramObject)
     .pipe(
       map(response => {
@@ -69,12 +68,12 @@ updateCartItem(paramObject: any) : Observable<any> {
     );
 } 
 addCartItem(paramObject: any) : Observable<any> {
-
-  console.log(paramObject);
+  this.cartInfo.push(paramObject.cartitem);
+  localStorage.setItem('cartInfo',JSON.stringify(this.cartInfo));
+  
   return this.apiSrv.postData(this.addURL, this.json_key, paramObject)
     .pipe(
       map(response => {
-        console.log("serviceresponse");
         console.log(response);
         return response;
       }),

@@ -19,15 +19,12 @@ export class SubCategoryComponent implements OnInit {
   constructor(private categoryService:CategoryService,
     private _router:Router) {     
       this.param = this._router.getCurrentNavigation()?.extras.state;
-      console.log(this.param) ;
-      console.log(this.param.id) ;
       this.CategoryID =  this.param.id ;
   }
 
   ngOnInit(): void {
-    console.log(this.categoryService.getSubCategory(this.CategoryID));
+
     this.subCatList = this.categoryService.getSubCategory(this.CategoryID).SubCategories;
-    console.log(this.subCatList);
   }
 
   

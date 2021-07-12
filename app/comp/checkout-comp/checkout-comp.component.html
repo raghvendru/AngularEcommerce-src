@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title">
-        <h2>Checkout Form</h2>
+        <h2>Order Confirmation</h2>
     </div>
   <div class="d-flex">
     <form action="" method="">
@@ -11,7 +11,6 @@
      
       <label>
         <span>Street Address <span class="required">*</span></span>
-        <!-- <input type="text" name="houseadd" placeholder="House number and street name" required value = "{{address[0].Add1}}"  > -->
         <input type="text" name="houseadd" placeholder="House number and street name" [(ngModel)] = "customerDetail.address[0].Add1"  >
       </label>
       <label>
@@ -38,33 +37,34 @@
         <span>Email Address <span class="required">*</span></span>
         <input type="email" name="Email" [(ngModel)] = "customerDetail.Email"> 
       </label>
-    </form>
-    <div class="Yorder">
-      <table>
-        <tr>
-          <th colspan="2">Your order</th>
-        </tr>
+
+      <div class="Yorder">
+        <h2>Payment Methods</h2>
+         <label>
+          <span>Total<span class="required"></span></span>
+          <input type="text" name="total" value = "{{getTotal()}}"> 
+        </label>
+        <div>
+          <input type="radio" name="dbt" value="Direct Bank Transfer" [checked]="true" [(ngModel)]="paymentType" > Direct Bank Transfer
+        </div>
+        <div>
+          <input type="radio" name="dbt" value="Cash on Delivery" [checked]="true" [(ngModel)]="paymentType"  > Cash on Delivery
+        </div>
   
-        <tr>
-          <td>total</td>
-          <input type="email" name="city" value = "{{getTotal()}}"> 
-          <!-- <td>{{getTotal()}}</td> -->
-        </tr>
+  
         
-      </table><br>
-      <div>
-        <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
-      </div>
-      <div>
-        <input type="radio" name="dbt" value="cd"> Cash on Delivery
-      </div>
-      <div>
-        <input type="radio" name="dbt" value="cd"> Gpay <span>
-        <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
-        </span>
-      </div>
-      
-      <button type="button" (click) = "onClickPlace()">Place Order</button>
-    </div><!-- Yorder -->
+        <div>
+          <input type="radio" name="dbt" value="Gpay" [checked]="true" [(ngModel)]="paymentType" > Gpay <span>
+          <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
+          </span>
+        </div>
+        
+        <button type="button" (click) = "onClickPlace()" style="background-color: rgb(68, 51, 51);width:auto" >Place Order</button>
+      </div><!-- Yorder -->
+    </form>
+   
    </div>
   </div>
+
+
+  

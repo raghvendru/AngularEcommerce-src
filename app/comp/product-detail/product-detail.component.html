@@ -5,55 +5,31 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<!-- <app-similar (productSelected)="onSelected($event)"></app-similar> -->
   <head>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>eCommerce Product Detail</title>
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
-
   </head>
-
   <body>
-	
 	<div class="container">
 		<div class="card" style= "width:110%">
 			<div class="container-fliud">
 				<div class="wrapper row">
-				<div class="preview col-md-6">
-				
-				<div class="preview-pic tab-content">
-				 <!-- <div class="tab-pane active" id="pic-1"><img src="\assets\Shoe.jpg" style="width:200%; height:300px" /></div> -->
-				 <div class="tab-pane active" id="pic-1"><img class= "tab-pane-img-top image-bg" [src]="item.ImageURL" style="width: 448px; height:500px" /></div>
-				
-				
+					<div class="preview col-md-6">
+						<div class="preview-pic tab-content">
+				 			<div class="tab-pane active" id="pic-1"><img class= "tab-pane-img-top image-bg" [src]="item.ImageURL" style="width: 448px; height:500px" /></div>
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
-						  
 						</ul>
-						
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title" >{{item.Name}}</h3>
-						<div class="rating">
-						</div>
-                        <p>{{item.Description}}</p>
-						<h4 class="price">current price: <span>Rs.{{item.Price}}</span></h4>
-						Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" ><br><br><br>
-						<div class="action">
-							<a [routerLink]="['/productlist', item.SubCategoryID ]"><button class="add-to-cart btn btn-default" type="button" (click)="onClickItem()">add to cart</button></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							<!-- <p [routerLink]="['/productlist', item.SubCategoryID ]" class="dropdown-toggle " data-toggle="dropdown" href="#"></p> -->
-							<!-- <button class="add-to-cart btn btn-default" type="button"> -->
-							
-							<!-- <a [routerLink]="['/productlist', item.CategoryID]"></a>order it -->
-							<!-- </button>  -->
+							<div class="rating"></div>
+                        	<p>{{item.Description}}</p>
+							<h4 class="price">current price: <span>Rs.{{item.Price}}</span></h4>
+								Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" ><br><br><br>
+							<div class="action">
+							<a [routerLink]="['/productlist', item.SubCategoryID ]"><button class="add-to-cart btn btn-default" type="button" (click)="onClickaddToCart()">add to cart</button></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 							<button class="add-to-cart btn btn-default" type="button" (click)="onClickOrder()">Order It</button>
-						
-							<!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
-							<!-- <input type="text" > -->
-							
 						</div>
 					</div>
 				</div>

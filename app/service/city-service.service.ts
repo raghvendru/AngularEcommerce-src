@@ -18,9 +18,7 @@ export class CityServiceService extends BaseService{
     return this.apiSrv.getData(this._urlCityList,paramsObject )
       .pipe(
         map(response => {
-         // console.log('productList');
           console.log(response);
-         // console.log('productList');
           return response;
         }),
         catchError(ex => {

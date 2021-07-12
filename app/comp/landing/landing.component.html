@@ -1,45 +1,21 @@
 <div id="carousel-example" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="item active">
+       
         <a href="#"><img src="\assets\banner1.jpg" style="width:99%; height:250px" /></a>
         <div class="carousel-caption">
         </div>
       </div>
-      
   </div>
 <br>
-  <div class="main"  *ngFor="let item of menu ;  let i = index">
+  <div class="main col-12"  *ngFor="let item of menu ;  let i = index" >
     <ul class="cards">
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image" (click)="onClickItem(item.CategoryID)" ><img style="height: 280px;width: 238px;"  [src]="item.ImageURL"></div>
-          <!-- <a  *ngFor="let sub of category ; let i=index " [routerLink]="['/subCategory', sub.SubCategoryID ]"></a> -->
-        </div>
-      </li>
-      <!-- <li class="cards_item">
-        <div class="card">
-          <div class="card_image"  ><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/038fd72f-19c7-4853-b75c-4d1dbb314e121625121368437-eors-top-nav_04.jpg"></div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/9a565caa-57dc-47aa-9a55-1c984270c9ff1625121368431-eors-top-nav_02.jpg"></div>
-        </div>
-      </li>
       <li class="cards_item" >
-        <div class="card">
-          <div class="card_image" ><img style="height: 198px;width: 450px;" src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/retaillabs/2021/7/5/256a768e-2bb1-489e-ad0c-0caad44e9d731625425405541-offers-copy-6.jpg"></div>
+        <div class="card" >
+          <div class="card_image "  (click)="onClickItem(item.CategoryID)" ><img style="width: 250px; height: 250px;"  [src]="item.ImageURL"></div>
         </div>
       </li>
-      <li class="cards_item" >
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/retaillabs/2021/7/3/0bda9a71-e6a2-4a42-abd8-e1c60db93fac1625310426319-eors-top-nav-2_08.jpg"></div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img style="height: 198px;width: 450px;"  src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_200,c_limit,fl_progressive/assets/images/2021/7/1/4fc92aa2-9987-4d79-b8d4-9e09b17332c61625121368463-eors-top-nav_10.jpg"></div>
-        </div>
-      </li> -->
     </ul>
+
+   
   </div>

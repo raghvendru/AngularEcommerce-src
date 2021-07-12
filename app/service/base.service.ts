@@ -21,25 +21,7 @@ export abstract class BaseService {
 
   protected preGetListPage() {
   }
-
-  // getListPage(paramsObject) {
-  //   this.preGetListPage();
-  //   return this.apiService.getData(this.url, paramsObject);
-  // }
-
-  // getListPage(paramsObject)  {
-  //   this.preGetListPage();
-  //   this.apiService.getData(this.url, paramsObject).subscribe(data => {
-  //     console.log(data) ;
-  //     // return data ;
-  //     return this.postGetListPage(paramsObject)
-  //   },
-  //   );
-
-  // }
-
   
-
   getListPage(paramsObject:any) : Observable<any> {
     this.preGetListPage();
 

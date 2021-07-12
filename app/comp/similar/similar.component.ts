@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Constant } from 'src/app/constant';
 import { ProductListService } from 'src/app/service/product-list.service';
 
 
@@ -14,14 +15,14 @@ export class SimilarComponent implements OnInit {
   public subcategorytid = 1;
   public pageNum : number = 1;
   public pageSize : number = 10;
-  // @Output() productSelected = new EventEmitter;
+
 
 
   constructor(private productListSrv:ProductListService) { }
 
   ngOnInit(): void {
     this.getSimilarProduct();
-    console.log(this.itemInput);
+ 
     
   }
 
@@ -29,8 +30,8 @@ export class SimilarComponent implements OnInit {
     let param:any= {} ;
     param['productid'] = this.itemInput.ProductID;
     param['subcategoryid'] = this.itemInput.SubCategoryID;
-    param['page_num'] = this.pageNum ;
-    param['page_size'] = this.pageSize;
+    param['page_num'] = Constant.page_num;
+    param['page_size'] = Constant.page_size;
     
 
     // call the service method to fetch the data

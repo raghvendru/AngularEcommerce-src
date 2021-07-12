@@ -9,7 +9,9 @@ import { BaseService } from './base.service';
 })
 export class CustomerServiceService extends BaseService{
   private custAuthenticateURL: String = 'customer/customer-authentication';
-
+  private updateAddressURL: String = 'customer_address/update';
+  private json_key : string = 'customer_address_json';
+  
   constructor(private apiSrv:ApiService) {
     super(apiSrv);
   }
@@ -27,4 +29,17 @@ export class CustomerServiceService extends BaseService{
         })
       );
   }
+
+  updateCustomerAddress(paramObject: any) : Observable<any> {
+    return this.apiSrv.postData(this.updateAddressURL, this.json_key, paramObject)
+      .pipe(
+        map(response => {
+          console.log(response);
+          return response;
+        }),
+        catchError(ex => {
+          return ex;
+        })
+      );
+  } 
 }

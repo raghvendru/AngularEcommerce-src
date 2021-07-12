@@ -1,71 +1,15 @@
-<!-- <p>order-list works!</p>
-
-<div style="border: none; background-color: white;"><b>Order 1</b></div>
-<div class="container">
-    <img src="\assets\Shoe.jpg" style="width:10%; height:100px" />
-  <div *ngFor="let item of productlist ;  let i = index"><b>Men's Shoes Fashion</b><br>AVU Men's Running Shoes Lightweight Non Slip <p>Sneakers Breathable Walking Fashion Athletic Gym Tennis Shoes</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <div><b>Amount</b><p>Rs.1800</p></div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <div><b>delivering date</b><p>june 15th</p></div>
-</div>
-
-
- <table>
-  <tr>
-      <th>Image</th> 
-    <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <th>Quantity</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <th>Amount</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <th>delivering Date</th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  </tr>
-  <tr style="padding:15px" *ngFor="let order of orderList ;  let i = index "> 
-    <td style="padding: 8px;" *ngFor="let product of order.items ; let i = index"><img class= "media image-bg" [src] = "product.imageurl" width="15%" height="100px"/></td> 
-       <tr *ngFor="let product of order.items ; let i = index">
-        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.productname}} </td> 
-        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{product.qty}} </td> 
-        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.totalprice}} </td> &nbsp; &nbsp; &nbsp; &nbsp; 
-        <td *ngFor="let product of order.items ; let i = index" style="color:black"   href="#">{{order.orderdate}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <input  data-id="{{col.rowIndex}}-{{col.columnIndex}}" [value]="col.cellValue" (input)="col.cellValue = $event.target.value" (click)="model.selectColumn(col)" (keyup)="navigate($event)" />
-      </tr> 
-      </tr>
-</table> -->
-<!-- 
-<div class="row ">
-
-  <div class="col-12">
-    <table >
-    <td style="width: 210px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ProductImage  </td>
-    <td style="width: 270px;"> ProductName</td>
-    <td style="width: 130px; text-align: center;">Quantity</td>
-    <td style="width: 110px;text-align: center;"> Date</td>
-  </table>
-  </div>
-  </div>
-<div class="row " *ngFor="let order of orderList ;  let i = index ">
-
-<div class="col-9" *ngFor="let product of order.items ; let i = index">
-  <div class="col-2"><img class= "media image-bg" [src] = "product.imageurl" style="width:80%; height:auto" /> </div>
-  <div class="col-3">{{product.productname}} </div>
-  <div class="col-1"><p style="text-align: center;">{{product.qty}}</p></div>
-  <div class="col-3" style="text-align: center;">{{order.orderdate}} </div>
-</div>
-
-</div> -->
-
 <div class="row " *ngFor="let order of orderList ;  let i = index ">
 
   <div class="card col-12" *ngFor="let product of order.items ; let j = index">
     <div class="col-2">
       
    <div class="im" ><img [src] = "product.imageurl"   alt="Avatar" style="width:auto; height: 110px;"></div>
-    </div>
+  </div>
     <div class="col-10">
     <p style="width: 80%;">Product:-&nbsp;&nbsp;{{product.productname}} </p>
         
     <p >Quantity:-&nbsp;&nbsp;{{product.qty}}</p>
     <p>Date:- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{order.orderdate}} </p>
-    <button type="button"  (click)="onClickReturn(product)">
-      Return 
-  </button> 
   </div>
   </div>
   </div>

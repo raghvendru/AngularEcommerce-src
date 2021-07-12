@@ -1,24 +1,9 @@
-<!-- <div class="row" >          
+ <div class="row" style="padding-left: 120px;">          
           
-    <div class="card col-12" >
-     
-              <a  *ngFor="let sub of subCatList ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]">
-              <img [src] = "sub.ImageURL"   alt="Avatar" style="width:auto; height: 150px;">
-              <p  class="dropdown-toggle "  data-toggle="dropdown" href="#">{{sub.Name}}</p></a>
-
-            </div> 
-      
-  </div> -->
-
-
-
-  <div class="row" >          
-          
-    <div class="card col-12"   *ngFor="let sub of subCatList ;  let i = index "[routerLink]="['/productlist', sub.SubCategoryID ]">
-     <div class="im" ><img [src] = "sub.ImageURL"   alt="Avatar" style="width:auto; height: 150px;"></div>
-      <div class="container col-10"><br><br><br>
-        <!-- <div class="h4"> <img [src] = "sub.ImageURL"   alt="Avatar" style="width:auto; height: 150px;"> </div>  -->
-        <p><b>{{sub.Name}}</b></p> 
-      </div>
+  <div class="card col-12"   *ngFor="let sub of subCatList ;  let i = index "[routerLink]="['/productlist', sub.SubCategoryID ]">
+    <div class="im" ><img [src] = "sub.ImageURL"   alt="Avatar" style="width:auto; height: 150px;"></div>
+    <div class="container col-10"><br><br><br>
+      <p><b>{{sub.Name}}</b></p> 
     </div>
-    </div>
+  </div>
+</div>

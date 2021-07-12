@@ -1,61 +1,34 @@
-<!-- <table>
-    <tr>
-        <th>Image</th> 
-      <th>Product</th> &nbsp; &nbsp; &nbsp; &nbsp;
-      <th>Quantity</th> &nbsp; &nbsp; &nbsp; &nbsp;
-      <th>Price</th> &nbsp; &nbsp; &nbsp; &nbsp;
-      <th>Total</th> &nbsp; &nbsp; &nbsp; &nbsp;
-    </tr>
-    <tr  *ngFor="let item of cart ;  let i = index  ">
-        <td><img class= "media image-bg" [src] = "item.imageurl" style="width:30%; height:100px" /></td> 
-        <td style="color:black"   href="#">{{item.productname}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-        <!-- Quantity: <input type="text" name="quantity" [(ngModel)]="quantity" > --> 
-        <!-- <b>Type</b><input type=text name=type value='Enter your user id' onclick="make_blank();">Enter User ID -->
-        <!-- <td><input type='text' name = "qty" value={{item.qty}}  (click)="clickingText(i)" ></td> -->
-        <!-- <td style="color:black"   href="#">{{item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -->
-        <!-- <td style="color:black"   href="#">{{item.price}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <td style="color:black"   href="#">{{item.price*item.qty}} </td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <button type="button" class="btn btn-danger" (click)="onClickItem(i)">
-            <span class="fa fa-remove" ></span> Remove
-        </button>
-    </tr>
- </table>
-<button type="button" class="btn btn-success" (click)="onClick()">
-    Checkout 
-</button>  -->
-
-
-<div class="row " >
-
+<div class="row " style="padding-right: 10px;" >
+  <div class="checkout-btn" style="padding-right:100px ; ">
+    <button type="button"  style="background-color:rgb(68, 51, 51); float: right; ;color: rgb(255, 255, 255); " class="btn btn-success"  (click)="onClick()">
+        Buy Now 
+    </button></div>
     <div class="card col-12"*ngFor="let item of cart ;  let i = index  ">
       <div class="col-2">
-        
-     <div class="im" ><img [src] = "item.imageurl"   alt="Avatar" style="width:170px; height: 120px;"></div>
+        <div class="im" ><img [src] = "item.imageurl"   alt="Avatar" style="width:150px; height: 120px;"></div>
       </div>
       <div class="col-10">
-      <p style="width: 80%;">ProductName:-&nbsp;&nbsp;{{item.productname}} </p>
-      <p style="width: 80%;">Price:-&nbsp;&nbsp;{{item.price}} </p>
-          
-      <p >Total:-&nbsp;&nbsp;{{item.price*item.qty}} </p>
-      <p>Qty:-<select id="select" name="Qty" [(ngModel)] = "quantity">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-      </select></p>
-      <button style="background-color:lightgray ; color: black;" type="button" class="btn btn-danger" (click)="onClickItem(i)">
-        <span class="fa fa-remove" ></span> Remove
-    </button>
+        
+        <p style="width: 80%;">ProductName:-&nbsp;&nbsp;{{item.productname}} </p>
+        <p style="width: 80%;">Price:-&nbsp;&nbsp;{{item.price}} </p>
+            
+        <p >Total:-&nbsp;&nbsp;{{item.price*item.qty}} </p>
+        <p>Qty:-<input type="text" id="select" name="Qty" [(ngModel)] = "item.qty" > &nbsp; &nbsp; &nbsp; &nbsp;
+        <button style="background-color:rgb(216, 189, 168) ; size: 2px ;color: black;" type="button" class="btn " (click)="onClickUpdate(i)">
+          Update
+        </button></p> 
+        <button style="background-color:lightgray ; ; color: black;" type="button" class="btn btn-danger" (click)="onClickItem(i)">
+          <span class="fa fa-remove" ></span> Remove
+        </button>
+     
+      </div>
     </div>
-    </div>
-    </div>
-    <button type="button"  style="background-color:#e06e9f; float: right; padding:15px;color: rgb(255, 255, 255);" class="btn btn-success" (click)="onClick()">
-        Checkout 
-    </button> 
-    <br>
-    <br>
-    <br>
+    <!-- <p style = "padding :10px">Total:-&nbsp;&nbsp;{{totalPrice}} </p> -->
+</div>
+
+
+ <h4><p style = "padding :10px">Total:-&nbsp;&nbsp;{{totalPrice}}</p></h4>   
+<br>
 
 
 
