@@ -8,10 +8,8 @@
         <div class="im" ><img [src] = "item.imageurl"   alt="Avatar" style="width:150px; height: 120px;"></div>
       </div>
       <div class="col-10">
-        
         <p style="width: 80%;">ProductName:-&nbsp;&nbsp;{{item.productname}} </p>
         <p style="width: 80%;">Price:-&nbsp;&nbsp;{{item.price}} </p>
-            
         <p >Total:-&nbsp;&nbsp;{{item.price*item.qty}} </p>
         <p>Qty:-<input type="text" id="select" name="Qty" [(ngModel)] = "item.qty" > &nbsp; &nbsp; &nbsp; &nbsp;
         <button style="background-color:rgb(216, 189, 168) ; size: 2px ;color: black;" type="button" class="btn " (click)="onClickUpdate(i)">
@@ -20,14 +18,10 @@
         <button style="background-color:lightgray ; ; color: black;" type="button" class="btn btn-danger" (click)="onClickItem(i)">
           <span class="fa fa-remove" ></span> Remove
         </button>
-     
       </div>
     </div>
-    <!-- <p style = "padding :10px">Total:-&nbsp;&nbsp;{{totalPrice}} </p> -->
 </div>
-
-
- <h4><p style = "padding :10px">Total:-&nbsp;&nbsp;{{totalPrice}}</p></h4>   
+<h4><p style = "padding :10px">Total:-&nbsp;&nbsp;{{totalPrice}}</p></h4>   
 <br>
 
 

@@ -2,13 +2,12 @@
     <div class="title">
         <h2>Order Confirmation</h2>
     </div>
-  <div class="d-flex">
-    <form action="" method="">
+    <div class="d-flex">
+      <form action="" method="">
       <label>
         <span class="fname">Name <span class="required">*</span></span>
         <input type="text" name="fname" [(ngModel)] = "customerDetail.Name" >
       </label>
-     
       <label>
         <span>Street Address <span class="required">*</span></span>
         <input type="text" name="houseadd" placeholder="House number and street name" [(ngModel)] = "customerDetail.address[0].Add1"  >
@@ -37,10 +36,9 @@
         <span>Email Address <span class="required">*</span></span>
         <input type="email" name="Email" [(ngModel)] = "customerDetail.Email"> 
       </label>
-
       <div class="Yorder">
         <h2>Payment Methods</h2>
-         <label>
+        <label>
           <span>Total<span class="required"></span></span>
           <input type="text" name="total" value = "{{getTotal()}}"> 
         </label>
@@ -50,21 +48,16 @@
         <div>
           <input type="radio" name="dbt" value="Cash on Delivery" [checked]="true" [(ngModel)]="paymentType"  > Cash on Delivery
         </div>
-  
-  
-        
         <div>
           <input type="radio" name="dbt" value="Gpay" [checked]="true" [(ngModel)]="paymentType" > Gpay <span>
           <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
           </span>
         </div>
-        
         <button type="button" (click) = "onClickPlace()" style="background-color: rgb(68, 51, 51);width:auto" >Place Order</button>
-      </div><!-- Yorder -->
-    </form>
-   
-   </div>
+      </div>
+    </form> 
   </div>
+</div>
 
 
   

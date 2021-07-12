@@ -58,7 +58,6 @@ img {
 
 .cards {
   display:grid;
-  /* flex-wrap: wrap; */
   list-style: none;
   margin: 0;
 }
