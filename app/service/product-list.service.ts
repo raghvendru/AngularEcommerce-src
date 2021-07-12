@@ -17,7 +17,9 @@ export class ProductListService extends BaseService {
   constructor(private apiSrv:ApiService) {
     super(apiSrv);
    }
-
+  
+  /* This function gives the list of products in paginated form 
+    based on the subcategory */
   getProductList(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this.productListUrl,paramsObject )
@@ -32,6 +34,8 @@ export class ProductListService extends BaseService {
       );
   }
 
+  /* This function gives the list of product based on 
+  the search key entered by the user */
   getSearchPage(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this.searchPageUrl,paramsObject )
@@ -46,6 +50,9 @@ export class ProductListService extends BaseService {
       );
   }
 
+
+  /* This function give the list of similar product based on the 
+   given product info (based on subcategory) */
   getSimilarProduct(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this.similarProductUrl,paramsObject )

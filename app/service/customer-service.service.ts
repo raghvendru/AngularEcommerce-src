@@ -15,7 +15,11 @@ export class CustomerServiceService extends BaseService{
   constructor(private apiSrv:ApiService) {
     super(apiSrv);
   }
-
+  
+  /* This function is used to verify the user credential
+   if user credentials are valid this function gives the 
+   user object which includes user information , user address informaton,
+   and cart information.*/
   custAuthenticate(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this.custAuthenticateURL,paramsObject )
@@ -29,7 +33,7 @@ export class CustomerServiceService extends BaseService{
         })
       );
   }
-
+  /* This function is used to send the update customer address details*/ 
   updateCustomerAddress(paramObject: any) : Observable<any> {
     return this.apiSrv.postData(this.updateAddressURL, this.json_key, paramObject)
       .pipe(

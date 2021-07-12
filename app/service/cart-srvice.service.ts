@@ -22,9 +22,9 @@ export class CartSrviceService extends BaseService{
     super(apiSrv);
    }
 
+  /* This function is used to get the cart information
+   based on customerid and sessionid */
    getCart(paramObject: any) : Observable<any> {
-
-    console.log(paramObject);
     return this.apiSrv.getData(this.cartURL, paramObject)
       .pipe(
         map(response => {
@@ -38,10 +38,8 @@ export class CartSrviceService extends BaseService{
       );
  }
 
- 
+ /* This is function is used to delete the cart item */
  deleteCartItem(paramObject: any) : Observable<any> {
-
-  console.log(paramObject);
   return this.apiSrv.postData(this.deleteURL, this.json_key, paramObject)
     .pipe(
       map(response => {
@@ -55,6 +53,7 @@ export class CartSrviceService extends BaseService{
     );
 } 
 
+ /* This is function is used to update the cart item  i.e Quantity */
 updateCartItem(paramObject: any) : Observable<any> {
   return this.apiSrv.postData(this.updateURL, this.json_key, paramObject)
     .pipe(
@@ -67,6 +66,9 @@ updateCartItem(paramObject: any) : Observable<any> {
       })
     );
 } 
+
+
+/* This function is used to add the cart items to the cart */
 addCartItem(paramObject: any) : Observable<any> {
   this.cartInfo.push(paramObject.cartitem);
   localStorage.setItem('cartInfo',JSON.stringify(this.cartInfo));

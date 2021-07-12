@@ -12,7 +12,10 @@ export class CityServiceService extends BaseService{
 
   constructor(private apiSrv:ApiService) {
     super(apiSrv);
-   }
+  }
+
+    /*This function returns the list of city object in paginated form */ 
+  
    getCityList(paramsObject:any) : Observable<any> {
     console.log(paramsObject);
     return this.apiSrv.getData(this._urlCityList,paramsObject )
