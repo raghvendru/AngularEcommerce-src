@@ -14,8 +14,10 @@ export class ApiService {
     this.httpClient = http;
   }
 
+
+  /* this function is used to build the query parameter 
+    using the objects like url?key1=val1&key2=val2&key3=val3*/
   private buildQueryParams(paramsObject: any): string {
-    // url?key1=val1&key2=val2&key3=val3
     try {
       let queryParams = '';
       console.log(paramsObject);
@@ -35,7 +37,12 @@ export class ApiService {
       throw e;
     }
   }
-  
+   
+  /* This function is used to call the web server to get the
+   data by passing query parameter and the url which returns
+   json object or json array*/
+
+
   getData(url:any, params:any) : Observable<any> {
     let queryParam  = this.buildQueryParams(params) ;
     var data = null ;

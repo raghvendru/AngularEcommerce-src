@@ -17,6 +17,7 @@ export class OrderServiceService extends BaseService {
     super(apiSrv);
   }
 
+  /* This function is used to get the list of order in paginated form*/
   getOrderList(paramObject: any) : Observable<any> {
 
     return this.apiSrv.getData(this.orderURL, paramObject)
@@ -31,6 +32,7 @@ export class OrderServiceService extends BaseService {
       );
  }
 
+ /* This function is used to add the order*/
  addOrder(paramObject: any) : Observable<any> {
   return this.apiSrv.postData(this.addorderURL, this.json_key, paramObject)
     .pipe(

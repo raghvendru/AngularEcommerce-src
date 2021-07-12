@@ -1,22 +1,20 @@
 /*
- * Main entry point of the appliction 
- * 
- * Fuctionality: It is parent for all the components.
- * 
- * Entry Point: This is the first entry point.
- * 
- * What data you need: Categories and sub-categories
- * 
- * How do you get data: calling api service
- * 
- * Important Variable: menu of type JSON array
- * 
- * Structure of data (object / json):JSON Array
- * 
- * Out Navigation: navigates to the sub-category list depending on the category
- * 
- * 
- */
+* Fuctionality: this page shows the customer details for the confirmation of the order and gives the payment options .
+* 
+* Entry Point: Entry is from the cart page.
+* 
+* What data you need: the data of the products which are in the cart and customer details
+* 
+* How do you get data: we get data calling the order service and the customer service .
+* 
+* Important Variable: customerDetail,orderItems,totalPrice.
+* 
+* Structure of data (object / json): JSON Array.
+* 
+* Out Navigation:It navigates to ConfirmOrder.
+* 
+* 
+*/
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
@@ -32,6 +30,10 @@ import { StateServiceService } from 'src/app/service/state-service.service';
   styleUrls: ['./checkout-comp.component.css']
 
 })
+
+/*
+ * Declaration of variables 
+ */
 export class CheckoutCompComponent implements OnInit {
   public customerDetail : any = {};
   public address : any = [];
@@ -42,7 +44,12 @@ export class CheckoutCompComponent implements OnInit {
   public paymentType : string = "";
   public isOrder: boolean = true;
  
-
+  /*
+  * In this function we are injecting the class of category service and producr List service 
+  * requests dependencies from external sources rather than creating them.
+  * Storing the information to the local storage
+  * We get the information in the form of JSON and converting it into srting.
+  */
   constructor(private ordSrv:OrderServiceService, private cusSrv:CustomerServiceService,private cityListSrv:CityServiceService,private stateListSrv:StateServiceService,private _Activatedroute:ActivatedRoute,
     private _router:Router,) { 
 
@@ -52,26 +59,27 @@ export class CheckoutCompComponent implements OnInit {
       this.orderItems = JSON.parse(this.orderItems);
       this.address = this.customerDetail.address;
      }
-
+   /*
+  *On initialization this function is called
+  */
   ngOnInit(): void {
     this.getStateList();
     this.getCityList();
   }
-
+  /*this functions is called when user clicks on place order */
   onClickPlace(){
     this.addOrder();
     console.log(this.isOrder);
     if (this.isOrder == true) {
       console.log("customer");
       this.customerAddress();
-
     }
     console.log("checkout");
     console.log(this.customerDetail);
     this._router.navigateByUrl("/confirmOrder");
-
   }
 
+  /*by calling the service we fetch the state name based on stateid */
   getStateName(StateID:number):string{
     for(var s of this.state){
       if(StateID == s.stateid){
@@ -81,6 +89,7 @@ export class CheckoutCompComponent implements OnInit {
     return "";
   }
 
+  /*by calling the service we fetch the city name based on cityid */
   getCityName(CityID:number):string{
     for(var c of this.city){
       if(CityID == c.cityid){
@@ -90,6 +99,7 @@ export class CheckoutCompComponent implements OnInit {
     return "";
   }
 
+  /* this is function has the total price of the items present in the cart*/
   getTotal():number{
     this.totalPrice = 0;
     console.log("before multiply");
@@ -101,14 +111,14 @@ export class CheckoutCompComponent implements OnInit {
     return this.totalPrice;
   }
 
+  /* by calling the service fetching the statelist */
   getStateList() {
      let param:string = "";
     // call the service method to fetch the data
     this.stateListSrv.getStateList(param).subscribe(
       data => {
        console.log(data);
-       this.state = data;
-        
+       this.state = data;  
       },
       error1 => {
         console.log(error1);
@@ -116,14 +126,14 @@ export class CheckoutCompComponent implements OnInit {
     );
   }
 
+  /* by calling the service fetching the citylist */
   getCityList() {
      let param:string = "";
     // call the service method to fetch the data
     this.cityListSrv.getCityList(param).subscribe(
       data => {
        console.log(data);
-       this.city = data;
-        
+       this.city = data; 
       },
       error1 => {
         console.log(error1);
@@ -131,6 +141,7 @@ export class CheckoutCompComponent implements OnInit {
     );
   }
 
+  /*this adds the order for the customer by calling order service  */
   addOrder() {
     let paramObject : any ={};
     paramObject['customerid'] = this.customerDetail.CustomerID;
@@ -145,7 +156,6 @@ export class CheckoutCompComponent implements OnInit {
     this.totalPrice = 0;
     let orderitem : any =[];
     paramObject['orderitem'] = this.customerDetail.cart.items;
-    
     this.ordSrv.addOrder(paramObject).subscribe(
       data => {
         console.log(data);
@@ -157,9 +167,9 @@ export class CheckoutCompComponent implements OnInit {
         this.isOrder = false; 
       }
     );
-
   }
 
+  /* to fetch the customer details using customer service*/
   customerAddress() {
    
     let paramObject : any ={};
@@ -181,7 +191,6 @@ export class CheckoutCompComponent implements OnInit {
         console.log(error1);
       }
     );
-
   }
 }
 

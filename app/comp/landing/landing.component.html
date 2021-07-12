@@ -1,13 +1,12 @@
 <div id="carousel-example" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="item active">
-       
         <a href="#"><img src="\assets\banner1.jpg" style="width:99%; height:250px" /></a>
         <div class="carousel-caption">
         </div>
       </div>
   </div>
-<br>
+  <br>
   <div class="main col-12"  *ngFor="let item of menu ;  let i = index" >
     <ul class="cards">
       <li class="cards_item" >
@@ -15,7 +14,6 @@
           <div class="card_image "  (click)="onClickItem(item.CategoryID)" ><img style="width: 250px; height: 250px;"  [src]="item.ImageURL"></div>
         </div>
       </li>
-    </ul>
-
-   
+    </ul> 
   </div>
+</div>

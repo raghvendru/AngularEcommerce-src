@@ -5,13 +5,13 @@
  * 
  * What data you need: the data of the products which are in the cart
  * 
- * How do you get data: we get data .
+ * How do you get data: we get data calling the cart service .
  * 
- * Important Variable: 
+ * Important Variable: cartItems and Cart of an ARRAY.
  * 
- * Structure of data (object / json)
+ * Structure of data (object / json): JSON Array.
  * 
- * Out Navigation
+ * Out Navigation:It navigates to Order COnfirmation.
  * 
  * 
  */
@@ -27,6 +27,10 @@ import { CartSrviceService } from 'src/app/service/cart-srvice.service';
   templateUrl: './cart-comp.component.html',
   styleUrls: ['./cart-comp.component.css']
 })
+
+/*
+ * Declaration of variables 
+ */
 export class CartCompComponent implements OnInit {
 
   sessionInfo : any = {};
@@ -37,36 +41,28 @@ export class CartCompComponent implements OnInit {
   public loginInfo : any = {};
   public cartItems  : any = [];
   public totalPrice : number = 0;
- 
-  
-  
   public cart: any = []; 
 
   /*
-    this component get activated by clicking cart icon or checkout page
-    this is a cart page it shows the products with quantity,price and total price and with an option to edit or remove.
-    get the cart items products by  calling web service ngOnInit() method.
-    pass the parameters customerid or sessionid.
-    store the data into an variable(items) which is json array.
-
-    in HTML for each item in items bind the data and show the data by using ngFor.
+  * In this function we are injecting the class of category service and producr List service 
+  * requests dependencies from external sources rather than creating them.
+  * Storing the information to the local storage
+  * We get the information in the form of JSON and converting it into srting.
   */
-
-
     constructor(private cartSrv:CartSrviceService, private _Activatedroute:ActivatedRoute,
       private _router:Router){
         this.cartItems  = localStorage.getItem('cartInfo');
         this.cartItems  = JSON.parse(this.cartItems );
       }
-    
+   /*
+  *On initialization this function is called
+  */  
   ngOnInit(): void {
-  
     this.getCart();
-    // this.cart = localStorage.getItem('cartInfo');
-    // this.cart  = JSON.parse(this.cart);
   }
  
-  
+  /*this function returns the list of cart items present in the local storage sessionID or customerID */
+
   getCart() {
     let param:any= {};
     this.loginInfo = localStorage.getItem('loginInfo');
@@ -96,11 +92,11 @@ export class CartCompComponent implements OnInit {
 
   }
 
+  /*this function is called for the deletion of the items in the cart */
   deleteCartItem(paramObject: any, i: number) {
     this.totalPrice = this.totalPrice - (this.cart[i].price);
     console.log(this.totalPrice);
     this.cartSrv.deleteCartItem(paramObject).subscribe(
-      
       data => {
       console.log(data);
       console.log(this.cart[i].price);
@@ -111,18 +107,13 @@ export class CartCompComponent implements OnInit {
         console.log(error1);
       }
     );
-
   }
-
+  /*call the cart service.delete method cart id and product id */
   onClickItem(i: number) {
     let param:any= {} ;
     param['cartid'] = this.cart[i].cartid ;
     param['productid'] = this.cart[i].productid;
     this.deleteCartItem(param, i);
-
-    /*
-      call the cart service.delete method cart id and product id  
-    */
   }
 
   onClickUpdate(i: number) {
@@ -134,15 +125,7 @@ export class CartCompComponent implements OnInit {
   }
 
   
-  /*
- add to cart
-  create addcart item parameters are sessionid, customerid, cartitem: productid, quantity and price
-  onClick add to cart call the api service 
-  onClick addtocart the carticon the number needs to be incremented  
- */
-  /* deleting the item*/
- 
-
+  /*by calling the cart service we are updating the cartitems*/
   updateCartItem(paramObject: any, i: number){
     this.cartSrv.updateCartItem(paramObject).subscribe(
       
@@ -153,8 +136,12 @@ export class CartCompComponent implements OnInit {
         console.log(error1);
       }
     );
-
   } 
+
+  /* this is function is called when user clicks on Buy Now button.
+  * on clicking the button it navigates through order confirmation when user is already logged in.
+  * if not logged in, it navigates to login p.
+  */
   onClick(){
     if(this.loginInfo!=null) {
    
@@ -165,7 +152,7 @@ export class CartCompComponent implements OnInit {
 
     console.log("checkout");
   } 
-
+ /* this is function has the total price of the items present in the cart*/
   getTotal():number {
     this.totalPrice = 0;
     console.log(this.cartItems);

@@ -17,6 +17,9 @@ export class CategoryService extends BaseService {
     super(apiSrv);
    }
 
+
+  /* This function gives the category and its subCategories information*/
+
    getMenu() : Observable<any> {
 
     return this.apiSrv.getData(this.menuURL, null)
@@ -32,6 +35,8 @@ export class CategoryService extends BaseService {
       );
  }
 
+
+ /* This function gives the Subcategories info based on the category */ 
  getSubCategory(cat : number) : any {
   console.log(cat);
   console.log(this.menuObj);
