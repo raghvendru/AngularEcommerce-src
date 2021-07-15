@@ -3,11 +3,11 @@
  * 
  * Entry Point: This is the main page.
  * 
- * What data you need: the data of the category list.
+ * What data you need: the data of the category list and sub category
  * 
  * How do you get data: we get data calling the menu service .
  * 
- * Important Variable: menu which of Array .
+ * Important Variable: menu - array of categories and sub categories
  * 
  * Structure of data (object / json): JSON Array.
  * 
@@ -29,8 +29,8 @@ import { CategoryService } from 'src/app/service/category.service';
  * Declaration of variables 
  */
 export class LandingComponent implements OnInit {
-  public selectedItem = null;
-  public category:Array<any>=[];
+
+  // public category:Array<any>=[];
   public menu:Array<any>=[];
 
  /*

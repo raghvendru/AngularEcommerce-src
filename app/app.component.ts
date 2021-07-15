@@ -32,6 +32,9 @@ import { CategoryService } from './service/category.service';
 import { ProductListService } from './service/product-list.service';
 import { RouterModule,Routes } from '@angular/router';
 import { CustomerServiceService } from './service/customer-service.service';
+import { Constant } from './constant';
+import { count } from 'rxjs/operators';
+import { SharedServiceService } from './service/shared-service.service';
 
 @Component({
   selector: 'app-root',
@@ -40,19 +43,23 @@ import { CustomerServiceService } from './service/customer-service.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'shopping';
+  title = Constant.Title;
   public search:string = "";
  
   public productList:Array<any> = [];
   public menu:Array<any> = [];
-  public sessionInfo : any = {};
-  public loginDetail : any = {};
-  /*
+  public sessionInfo : String = "";
+  public loginDetail : any = null;
+  public count: number = 0 ;
+ 
+  /*;
   *On initialization this function is called
   */
   ngOnInit(): void {
     this.getMenu();
     this.autoLogin();
+
+    this.sharedService.sharedMessage.subscribe(myCartCount=> this.count= myCartCount)
   }
 
   /*
@@ -61,15 +68,17 @@ export class AppComponent implements OnInit {
   * Storing the information to the local storage
   * We get the information in the form of JSON and converting it into srting.
   */
-  constructor(private categoryService:CategoryService, private cstSrv: CustomerServiceService, private productListSrv:ProductListService,
+  constructor(private categoryService:CategoryService,private sharedService: SharedServiceService, private cstSrv: CustomerServiceService, private productListSrv:ProductListService,
     private _router:Router){
-     let loginInfo = localStorage.getItem('sessionID');
-     if ( loginInfo == null) {
-       let token = this.getToken();
-       let info :any = {}
-       info = {'sessionID':token}
-       localStorage.setItem('sessionID',JSON.stringify(info));
-      }   
+     let sessionInfoStr = localStorage.getItem(Constant.sessionKey); // get the information from local storage. If this is new user, then sessionInfoStr is null
+    //  this.count =  this.sharedService.myCartCount;
+    //  console.log(this.sharedService.myCartCount);
+     if ( sessionInfoStr == null) {
+       this.sessionInfo = this.getToken(); // generate unique token of 10 digits
+       localStorage.setItem('sessionID',String(this.sessionInfo)); // store in local storage to check for returning user
+      } else {
+        this.sessionInfo = sessionInfoStr.toString();
+      }
     }
 
     /* this function returns a unique token which is a combination of 10 digit
@@ -78,6 +87,8 @@ export class AppComponent implements OnInit {
     * 
     * randmoize the number, get a ditigit by flooring and generate string
     */
+
+  
   
   getToken() : String{
     let token = "";
@@ -133,31 +144,27 @@ export class AppComponent implements OnInit {
   }
 
   autoLogin() {
-    this.sessionInfo = localStorage.getItem('sessionID');
-    this.sessionInfo  = JSON.parse(this.sessionInfo );
-    this.loginDetail= localStorage.getItem('loginInfo') 
-    this.loginDetail  = JSON.parse(this.loginDetail );
-    let param : any =  {} ;
-    if(this.loginDetail != null ) {
-      param['session_id'] = this.sessionInfo.sessionID;
+    let loginDetail = localStorage.getItem(Constant.userKey) ;
+    if (loginDetail != null) {
+      this.loginDetail  = JSON.parse(loginDetail);
+      let param : any =  {} ;
+      param['session_id'] = this.sessionInfo;
       param['phone_num'] = this.loginDetail.Phone ;
       param['password'] = this.loginDetail.Password;
       this.cstSrv.custAuthenticate(param).subscribe(
         data => {
           console.log(data);
-          let loginInfo = localStorage.getItem('loginInfo');
-          localStorage.setItem("loginInfo", JSON.stringify(data)); 
+          localStorage.setItem(Constant.userKey, JSON.stringify(data)); 
           console.log("auto login is  successful");
         },
         error1 => {
           console.log(error1);
         }
       );
-    } else {
-      console.log("auto login is not successful");
+      } else {
+        console.log("auto login is not successful");
     }
   }
-
 }
 
 

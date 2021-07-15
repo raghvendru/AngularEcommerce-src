@@ -19,6 +19,8 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constant } from 'src/app/constant';
+import { CartSrviceService } from 'src/app/service/cart-srvice.service';
 import { CityServiceService } from 'src/app/service/city-service.service';
 import { CustomerServiceService } from 'src/app/service/customer-service.service';
 import { OrderServiceService } from 'src/app/service/order-service.service';
@@ -36,13 +38,15 @@ import { StateServiceService } from 'src/app/service/state-service.service';
  */
 export class CheckoutCompComponent implements OnInit {
   public customerDetail : any = {};
-  public address : any = [];
   public state : any = [];
-  public orderItems : any = [];
   public city : any = [];
   public totalPrice :number = 0;
   public paymentType : string = "";
   public isOrder: boolean = true;
+
+  sessionInfo : string = "";
+  public loginInfo : any = {};
+  public cart: Array<any> = []; 
  
   /*
   * In this function we are injecting the class of category service and producr List service 
@@ -50,21 +54,20 @@ export class CheckoutCompComponent implements OnInit {
   * Storing the information to the local storage
   * We get the information in the form of JSON and converting it into srting.
   */
-  constructor(private ordSrv:OrderServiceService, private cusSrv:CustomerServiceService,private cityListSrv:CityServiceService,private stateListSrv:StateServiceService,private _Activatedroute:ActivatedRoute,
+  constructor(private ordSrv:OrderServiceService, private cartSrv:CartSrviceService, private cusSrv:CustomerServiceService,private cityListSrv:CityServiceService,private stateListSrv:StateServiceService,private _Activatedroute:ActivatedRoute,
     private _router:Router,) { 
-
-      this.customerDetail = localStorage.getItem('loginInfo');
-      this.customerDetail = JSON.parse(this.customerDetail);
-      this.orderItems = localStorage.getItem('cartInfo');
-      this.orderItems = JSON.parse(this.orderItems);
-      this.address = this.customerDetail.address;
-     }
+      let str = localStorage.getItem(Constant.userKey);
+      if ( str != null) {
+        this.customerDetail = JSON.parse(str);
+      } 
+    }
    /*
   *On initialization this function is called
   */
   ngOnInit(): void {
     this.getStateList();
     this.getCityList();
+    this.getCart();
   }
   /*this functions is called when user clicks on place order */
   onClickPlace(){
@@ -78,6 +81,29 @@ export class CheckoutCompComponent implements OnInit {
     console.log(this.customerDetail);
     this._router.navigateByUrl("/confirmOrder");
   }
+
+  getCart() {
+    let param:any= {};
+    let str  = localStorage.getItem(Constant.sessionKey);
+    if (str != null) {
+      this.sessionInfo  = str;
+    }
+    param['sessionid'] = this.sessionInfo ;
+    param['customerid'] = this.customerDetail.CustomerID;
+    this.cartSrv.getCart(param).subscribe(
+      data => {
+        console.log(data);
+        this.cart = data.items ;
+        console.log(this.cart);
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+
+  }
+
+
 
   /*by calling the service we fetch the state name based on stateid */
   getStateName(StateID:number):string{
@@ -101,13 +127,10 @@ export class CheckoutCompComponent implements OnInit {
 
   /* this is function has the total price of the items present in the cart*/
   getTotal():number{
-    this.totalPrice = 0;
-    console.log("before multiply");
-    console.log(this.totalPrice);
-    for(var t of this.orderItems){
+    this.totalPrice = 0.0;
+    for(var t of this.cart){
       this.totalPrice = this.totalPrice +((t.qty)*(t.price));
     }
-    console.log(this.totalPrice);
     return this.totalPrice;
   }
 
@@ -154,13 +177,20 @@ export class CheckoutCompComponent implements OnInit {
     }
     paramObject['totalprice'] = this.totalPrice;
     this.totalPrice = 0;
-    let orderitem : any =[];
-    paramObject['orderitem'] = this.customerDetail.cart.items;
+    let items : any = [];
+    for (var product of this.cart) {
+      let item : any = {};
+      item['productid'] = product.productid;
+      item['qty'] = product.qty;
+      item['price'] = product.price;
+      items.push(item);
+      console.log(items);
+    }
+    paramObject['orderitem'] = items;
     this.ordSrv.addOrder(paramObject).subscribe(
       data => {
         console.log(data);
         this.isOrder = true;
-        localStorage.removeItem
       },
       error1 => {
         console.log(error1);
@@ -172,11 +202,9 @@ export class CheckoutCompComponent implements OnInit {
   /* to fetch the customer details using customer service*/
   customerAddress() {
    
-    let paramObject : any ={};
-    console.log(this.customerDetail.CustomerID);
+    let paramObject : any = {};
     paramObject['customerid'] = this.customerDetail.CustomerID;
     paramObject['customeraddressid'] = this.customerDetail.address[0].CustomerAddressID;
-    paramObject['paymenttype'] = this.paymentType;
     paramObject['add1'] = this.customerDetail.address[0].Add1;
     paramObject['add2'] = this.customerDetail.address[0].Add2 ;
     paramObject['add3'] = this.customerDetail.address[0].Add3;
@@ -185,7 +213,7 @@ export class CheckoutCompComponent implements OnInit {
     paramObject['pincode'] = this.customerDetail.address[0].PinCode;   
     this.cusSrv.updateCustomerAddress(paramObject).subscribe(
       data => {
-      console.log(data);
+        console.log(data);
       },
       error1 => {
         console.log(error1);

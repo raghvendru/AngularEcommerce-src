@@ -71,7 +71,7 @@ updateCartItem(paramObject: any) : Observable<any> {
 /* This function is used to add the cart items to the cart */
 addCartItem(paramObject: any) : Observable<any> {
   this.cartInfo.push(paramObject.cartitem);
-  localStorage.setItem('cartInfo',JSON.stringify(this.cartInfo));
+  // localStorage.setItem('cartInfo',JSON.stringify(this.cartInfo));
   
   return this.apiSrv.postData(this.addURL, this.json_key, paramObject)
     .pipe(

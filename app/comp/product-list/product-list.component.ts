@@ -1,3 +1,21 @@
+/* 
+ * Fuctionality: this page shows the product list based on the sub category
+ * 
+ * Entry Point: Called either from sub category list or from menu or from search
+ * 
+ * What data you need: the data of the product list a
+ * 
+ * How do you get data: we get data calling the product service .
+ * 
+ * Important Variable: productList - array of categories and sub categories
+ * 
+ * Structure of data (object / json): JSON Array.
+ * 
+ * Out Navigation:It navigates to Prodcut Detail Page.
+ * 
+ * 
+ */
+
 import { state } from '@angular/animations';
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -13,17 +31,12 @@ import { ProductListService } from 'src/app/service/product-list.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  // search : String = "";
-  pageNum : number = 1 ;
-  pageSize : number = 50;
+
   public search :any = "";
-
-
-  public productlist:Array<any>=[];
-
-  public id:any;
-  public sub: Subscription = new Subscription ;
+  public id :any;
   public selectedItem = null;
+  public sub: Subscription = new Subscription ;
+  public productlist:Array<any>=[];
 
 
   constructor(private productListSrv:ProductListService,private _Activatedroute:ActivatedRoute,
@@ -31,20 +44,15 @@ export class ProductListComponent implements OnInit {
     
    }
 
-   ngOnInit() {
-    
- 
-    this.sub=this._Activatedroute.paramMap.subscribe(params => { 
-       console.log(params);
+  ngOnInit() {
+    this.sub=this._Activatedroute.paramMap.subscribe(params => { // check if called by search or by passing id of sub category
          if (params.get('id')){
           this.id = params.get('id');
           this.getData(this.id);
-         } else {
+        } else {
           this.search = params.get('search');
           this.getSearchPage(this.search);
-          console.log(params.get('search'));
-
-         }
+        }
          
     });
   }
@@ -60,7 +68,6 @@ export class ProductListComponent implements OnInit {
       data => {
        console.log(data);
        this.productlist = data.data;
-        
       },
       error1 => {
         console.log(error1);
@@ -78,19 +85,17 @@ export class ProductListComponent implements OnInit {
   getSearchPage(search:string) { 
     let param:any= {} ;
     param['search'] = this.search;
-    param['page_num'] = this.pageNum ;
-    param['page_size'] = this.pageSize;
+    param['page_num'] = Constant.page_num  ;
+    param['page_size'] = Constant.page_size ;
     // call the service method to fetch the data
     this.productListSrv.getSearchPage(param).subscribe(
       data => {
        console.log(data);
-       this.productlist = data.data;
-        
+       this.productlist = data.data;   
       },
       error1 => {
         console.log(error1);
       }
     );
   }
-
 }

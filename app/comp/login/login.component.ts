@@ -17,6 +17,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constant } from 'src/app/constant';
 import { CustomerServiceService } from 'src/app/service/customer-service.service';
 
 @Component({
@@ -33,8 +34,7 @@ export class LoginComponent implements OnInit {
   public phone: any;
   public password:String ="" ;
   public custDetail: any = {};
-  public cartInfo : any = [];
-  public sessionInfo:any = {};
+  public sessionInfo:string = "";
   
   /*
   * In this function we are injecting the class of category service and producr List service 
@@ -50,40 +50,36 @@ export class LoginComponent implements OnInit {
   *On initialization this function is called
   */ 
   ngOnInit(): void {
-    this.sessionInfo = localStorage.getItem('sessionID');
-    this.sessionInfo  = JSON.parse(this.sessionInfo );
+    let str= localStorage.getItem(Constant.sessionKey);
+    if ( str != null) {
+      this.sessionInfo  = str;  
+    }
   }
   
-  /* on click of submit it navigates to the main page or to the orderConfirmation */
+  
   onClick(){
-    this.getCustDetails();
-    this.cartInfo = localStorage.getItem('cartInfo');
-    if (this.cartInfo == null) {
-      this._router.navigateByUrl('/landing');
-    } else {
-      this._router.navigateByUrl('/checkout');
-    }
+    this.getCustDetails();    
   }
 
   /* by calling the service we fetch the data of the customer*/
   getCustDetails() {
     let param:any= {} ;
-    param['session_id'] = this.sessionInfo.sessionID;
+    param['session_id'] = this.sessionInfo;
     param['phone_num'] = this.phone ;
     param['password'] = this.password;
     // call the service method to fetch the data
     this.cstSrv.custAuthenticate(param).subscribe(
       data => {
-       console.log(data);
-       this.custDetail = data;
-        if ( this.custDetail != null) {
-          let loginInfo = localStorage.getItem('loginInfo');
-          localStorage.setItem("loginInfo", JSON.stringify(this.custDetail));
-          alert('login successful');
-        }  else {
-          alert('invalid Credentials');
-          this._router.navigateByUrl("/login");
-        }
+          console.log(data);
+          this.custDetail = data;
+          if ( this.custDetail != null) {
+            localStorage.setItem(Constant.userKey, JSON.stringify(this.custDetail));
+            alert('login successful');
+            this._router.navigateByUrl('/checkout');
+          }  else {
+            alert('invalid Credentials');
+            this._router.navigateByUrl("/login");
+          }
       },
       error1 => {
         console.log(error1);

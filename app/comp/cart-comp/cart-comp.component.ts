@@ -20,7 +20,9 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Constant } from 'src/app/constant';
 import { CartSrviceService } from 'src/app/service/cart-srvice.service';
+import { SharedServiceService } from 'src/app/service/shared-service.service';
 
 @Component({
   selector: 'app-cart-comp',
@@ -33,15 +35,10 @@ import { CartSrviceService } from 'src/app/service/cart-srvice.service';
  */
 export class CartCompComponent implements OnInit {
 
-  sessionInfo : any = {};
-  customerid : number = 1 ;
-  public selectedItem = null;
-  public quantity: number = 1;
-  public item: any;
+  sessionInfo : string = "";
   public loginInfo : any = {};
-  public cartItems  : any = [];
-  public totalPrice : number = 0;
   public cart: any = []; 
+  public myCartCount : number = 0;
 
   /*
   * In this function we are injecting the class of category service and producr List service 
@@ -49,15 +46,14 @@ export class CartCompComponent implements OnInit {
   * Storing the information to the local storage
   * We get the information in the form of JSON and converting it into srting.
   */
-    constructor(private cartSrv:CartSrviceService, private _Activatedroute:ActivatedRoute,
+    constructor(private cartSrv:CartSrviceService, private _Activatedroute:ActivatedRoute,  private sharedService: SharedServiceService,
       private _router:Router){
-        this.cartItems  = localStorage.getItem('cartInfo');
-        this.cartItems  = JSON.parse(this.cartItems );
       }
    /*
   *On initialization this function is called
   */  
   ngOnInit(): void {
+    this.sharedService.sharedMessage.subscribe(myCartCount => this.myCartCount = myCartCount)
     this.getCart();
   }
  
@@ -65,25 +61,31 @@ export class CartCompComponent implements OnInit {
 
   getCart() {
     let param:any= {};
-    this.loginInfo = localStorage.getItem('loginInfo');
-    this.loginInfo = JSON.parse(this.loginInfo);
-    this.sessionInfo = localStorage.getItem('sessionID');
-    this.sessionInfo  = JSON.parse(this.sessionInfo );
-    param['sessionid'] = this.sessionInfo.sessionID ;
-    console.log(this.loginInfo);
-    console.log(this.loginInfo.CustomerID );
-    if (this.loginInfo.CustomerID == undefined) {
-      param['customerid'] = -1;
+    let str  = localStorage.getItem(Constant.userKey);
+    if (str != null) {
+      this.loginInfo = JSON.parse(str); 
     } else {
-      param['customerid'] = this.loginInfo.CustomerID;
+      this.loginInfo = null ;
     }
-   
-    console.log("getcart");
+    str = localStorage.getItem(Constant.sessionKey);
+    if (str != null) {
+      this.sessionInfo  = str ;
+      param['sessionid'] = this.sessionInfo ;
+    }
+  
+    if (this.loginInfo != null) {
+      if (this.loginInfo.CustomerID == undefined) {
+        param['customerid'] = -1;
+      } else {
+        param['customerid'] = this.loginInfo.CustomerID;
+      }
+    }
+    
     this.cartSrv.getCart(param).subscribe(
       data => {
-      console.log(data);
-      this.cart = data.items ;
-      console.log(this.cart);
+        console.log(data);
+        this.cart = data.items ;
+        console.log(this.cart);
       },
       error1 => {
         console.log(error1);
@@ -94,14 +96,11 @@ export class CartCompComponent implements OnInit {
 
   /*this function is called for the deletion of the items in the cart */
   deleteCartItem(paramObject: any, i: number) {
-    this.totalPrice = this.totalPrice - (this.cart[i].price);
-    console.log(this.totalPrice);
     this.cartSrv.deleteCartItem(paramObject).subscribe(
       data => {
       console.log(data);
-      console.log(this.cart[i].price);
-      // deleting the item
-       this.cart.splice(i, 1);
+        // deleting the item
+        this.cart.splice(i, 1);
       },
       error1 => {
         console.log(error1);
@@ -109,7 +108,8 @@ export class CartCompComponent implements OnInit {
     );
   }
   /*call the cart service.delete method cart id and product id */
-  onClickItem(i: number) {
+  onClickRemove(i: number) {
+    this.myCartCountMethod();
     let param:any= {} ;
     param['cartid'] = this.cart[i].cartid ;
     param['productid'] = this.cart[i].productid;
@@ -124,13 +124,17 @@ export class CartCompComponent implements OnInit {
     this.updateCartItem(param, i);
   }
 
+  myCartCountMethod() {
+    this.sharedService.myCartCountMethod(this.myCartCount -1);
+  }
+
   
-  /*by calling the cart service we are updating the cartitems*/
+  //by calling the cart service we are updating the cartitems/
   updateCartItem(paramObject: any, i: number){
     this.cartSrv.updateCartItem(paramObject).subscribe(
       
       data => {
-      console.log(data);
+        console.log(data);
       },
       error1 => {
         console.log(error1);
@@ -143,23 +147,24 @@ export class CartCompComponent implements OnInit {
   * if not logged in, it navigates to login p.
   */
   onClick(){
-    if(this.loginInfo!=null) {
-   
-      this._router.navigateByUrl("/checkout",{state : {totalPrice: this.totalPrice}});
+    if(this.loginInfo != null) {
+      this._router.navigateByUrl("/checkout");
     } else {
       this._router.navigateByUrl("/login");
     }
-
-    console.log("checkout");
   } 
+
+  ocClickGoHere(){
+    this._router.navigateByUrl("/landing");
+  }
+
+  
  /* this is function has the total price of the items present in the cart*/
   getTotal():number {
-    this.totalPrice = 0;
-    console.log(this.cartItems);
-    for(var t of this.cartItems ) {
-      this.totalPrice = this.totalPrice +((t.qty)*(t.price));
+    var totalPrice =0.0;
+    for(var t of this.cart ) {
+      totalPrice = totalPrice +((t.qty)*(t.price));
     }
-    console.log(this.totalPrice);
-    return this.totalPrice;
+    return totalPrice;
   }
 }

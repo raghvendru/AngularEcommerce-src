@@ -1,3 +1,20 @@
+/* 
+ * Fuctionality: this page shows the sub catgories for a selected category
+ * 
+ * Entry Point: From landing page on clicking of Category icon
+ * 
+ * What data you need: need list of sub category by calling category serevice passing the category id
+ * 
+ * How do you get data: parent is passing the data through @input -- only categoryID
+ * 
+ * Important Variable: sucCatList - array of categories and sub categories
+ * 
+ * Structure of data (object / json): JSON Array.
+ * 
+ * Out Navigation:It navigates to product list page.
+ * 
+ * 
+ */
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/service/category.service';
@@ -12,8 +29,6 @@ export class SubCategoryComponent implements OnInit {
   public subCatList:Array<any>=[];
   @Input() itemInput :any = null;
   public CategoryID = 1;
-  public pageNum : number = 1;
-  public pageSize : number = 10;
   public param : any ;
 
   constructor(private categoryService:CategoryService,
@@ -23,10 +38,7 @@ export class SubCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.subCatList = this.categoryService.getSubCategory(this.CategoryID).SubCategories;
   }
-
-  
 
 }

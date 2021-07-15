@@ -32,8 +32,7 @@ import { OrderServiceService } from 'src/app/service/order-service.service';
  * Declaration of variables 
  */
 export class OrderListComponent implements OnInit {
-  public pageNum: number = 1;
-  public pageSize: number = 10;
+  
   public orderList: Array<any> = [];
   public customerDetail : any = {};
  

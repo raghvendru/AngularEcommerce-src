@@ -13,17 +13,11 @@ export class SimilarComponent implements OnInit {
   @Input() itemInput :any = null;
   public productid = 1;
   public subcategorytid = 1;
-  public pageNum : number = 1;
-  public pageSize : number = 10;
-
-
-
+ 
   constructor(private productListSrv:ProductListService) { }
-
   ngOnInit(): void {
     this.getSimilarProduct();
- 
-    
+  
   }
 
   getSimilarProduct(){

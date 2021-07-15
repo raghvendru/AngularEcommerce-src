@@ -1,33 +1,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <nav class="navbar navbar-inverse" style="background-color: #0c0c0c;" >
-  <div class="container-fluid" >
+<div class="container-fluid" >
+    
     <div class="navbar-header" >
 
       <li (click) = "onClickHome()" ><img src="\assets\Student_Shop_Logo (1).png" style="width: 260px;; height:50px" /></li>
     </div>
-    <div class="sub-menu" >
+  <div class="sub-menu" >
     <div class="nav navbar-nav" >
       <li class="color" style="padding: 15px;" (click) = "onClickHome()">Home</li>
-      <div class="sub-menu-nav"   *ngFor="let item of menu  ;  let i = index  ">
-    <button class="nav-btn color">{{item.Name}}</button>
+        <div class="sub-menu-nav"   *ngFor="let item of menu  ;  let i = index  ">
+          <button class="nav-btn color">{{item.Name}}</button>
+          <div class="sub-menu-alt">
+            <a *ngFor="let sub of item.SubCategories  ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]" href="#">
+            {{sub.Name}}</a>
+          </div>
+        </div>
+    </div>
+    <a class="login" *ngIf="loginDetail !=null" style="color: white;">Hi,{{loginDetail.Name}}</a>
     <div class="sub-menu-alt">
-      <a *ngFor="let sub of item.SubCategories  ; let i=index " [routerLink]="['/productlist', sub.SubCategoryID ]" href="#">
-       {{sub.Name}}</a>
+      <a  href="#">
+       your orders</a>
     </div>
-    </div>
-    </div>
+    <a class="login" *ngIf="loginDetail ==null" style="color: white;" (click) = "onClickUser()" >Login</a>
   </div>
 
     <div class="search-container" style="float: right; margin-top: 10px;">
-      <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 5px; font-size: 30px;float: right;" (click) = "onClickCart()"></i>
-      <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 5px; font-size: 30px;float:right;" (click) = "onClickUser()"></i>
+     
+     
+      <!-- <i class="fa fa-cart-plus" style="color: white; margin-right: 5px; margin-top: 5px; font-size: 30px;float: right;" (click) = "onClickCart()"></i> -->
+      
+      <span  class="fa-stack fa-2x has-badge icon" style="color: white; margin-right: 5px; margin-top: 1px; margin-bottom:8px ; font-size: 15px;float: right; padding-top: 1px;"  [attr.data-count] = "count">
+        <i class="fa fa-circle fa-stack-2x fa-inverse" style="margin-bottom: 5px;"></i>
+        <i  class="fa fa-shopping-cart fa-stack-2x red-cart" style="margin-bottom: 10px;" (click) = "onClickCart()" ></i>
+      </span>
+      
+      <!-- <i class="fa fa-user-circle" style="color: white;   margin-right: 8px;margin-top: 5px; font-size: 30px;float:right;" (click) = "onClickUser()"></i> --> 
+       <!-- <i class="login" *ngIf="loginDetail !=null" style="color: white;">Hi,{{loginDetail.Name}}</i>
+      <i class="login" *ngIf="loginDetail ==null" style="color: white;" (click) = "onClickUser()" >Login</i>
+      <div class="sub-menu-alt">
+        <a  href="#">
+         your orders</a>
+      </div> -->
       <input type="text" placeholder="Search.." name="search" [(ngModel)]="search">
       <button type="submit" style="margin-right: 10px;"><i class="fa fa-search" (click) = "onClickSearch()" ></i></button>
   </div>
   </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 </nav>
+
 <router-outlet></router-outlet>
 <div class="footer">
   <p><a rel="dofollow" target="_blank">About Us</a></p>
-</div>>
+</div>
