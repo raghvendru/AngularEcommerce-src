@@ -24,6 +24,7 @@ import { CartSrviceService } from 'src/app/service/cart-srvice.service';
 import { CityServiceService } from 'src/app/service/city-service.service';
 import { CustomerServiceService } from 'src/app/service/customer-service.service';
 import { OrderServiceService } from 'src/app/service/order-service.service';
+import { SharedServiceService } from 'src/app/service/shared-service.service';
 import { StateServiceService } from 'src/app/service/state-service.service';
 
 @Component({
@@ -47,6 +48,7 @@ export class CheckoutCompComponent implements OnInit {
   sessionInfo : string = "";
   public loginInfo : any = {};
   public cart: Array<any> = []; 
+  public myCartCount : number = 0;
  
   /*
   * In this function we are injecting the class of category service and producr List service 
@@ -55,7 +57,7 @@ export class CheckoutCompComponent implements OnInit {
   * We get the information in the form of JSON and converting it into srting.
   */
   constructor(private ordSrv:OrderServiceService, private cartSrv:CartSrviceService, private cusSrv:CustomerServiceService,private cityListSrv:CityServiceService,private stateListSrv:StateServiceService,private _Activatedroute:ActivatedRoute,
-    private _router:Router,) { 
+    private _router:Router, private sharedService: SharedServiceService,) { 
       let str = localStorage.getItem(Constant.userKey);
       if ( str != null) {
         this.customerDetail = JSON.parse(str);
@@ -65,15 +67,22 @@ export class CheckoutCompComponent implements OnInit {
   *On initialization this function is called
   */
   ngOnInit(): void {
+    this.sharedService.sharedMessage.subscribe(myCartCount => this.myCartCount = myCartCount)
     this.getStateList();
     this.getCityList();
     this.getCart();
+  }
+
+
+  myCartCountMethod() {
+    this.sharedService.myCartCountMethod(0);
   }
   /*this functions is called when user clicks on place order */
   onClickPlace(){
     this.addOrder();
     console.log(this.isOrder);
     if (this.isOrder == true) {
+      this. myCartCountMethod();
       console.log("customer");
       this.customerAddress();
     }
@@ -221,4 +230,3 @@ export class CheckoutCompComponent implements OnInit {
     );
   }
 }
-

@@ -17,9 +17,9 @@
           </div>
         </div>
     </div>
-    <a class="login" *ngIf="loginDetail !=null" style="color: white;">Hi,{{loginDetail.Name}}</a>
+    <a class="sub-menu-nav" *ngIf="loginDetail !=null" style="color: white;">Hi,{{loginDetail.Name}}</a>
     <div class="sub-menu-alt">
-      <a  href="#">
+      <a>
        your orders</a>
     </div>
     <a class="login" *ngIf="loginDetail ==null" style="color: white;" (click) = "onClickUser()" >Login</a>
