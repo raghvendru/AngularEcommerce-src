@@ -1,6 +1,6 @@
- <div class="row" style="padding-left: 120px;">          
+<div class="row" style="padding-left: 1em;">          
           
-  <div class="card col-12"   *ngFor="let sub of subCatList ;  let i = index "[routerLink]="['/productlist', sub.SubCategoryID ]">
+  <div class="card col-12"  *ngFor="let sub of subCatList ;  let i = index "[routerLink]="['/productlist', sub.SubCategoryID ]">
     <div class="im" ><img [src] = "sub.ImageURL"   alt="Avatar" style="width:auto; height: 150px;"></div>
     <div class="container col-10"><br><br><br>
       <p><b>{{sub.Name}}</b></p> 

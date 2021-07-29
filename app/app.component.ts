@@ -35,6 +35,7 @@ import { CustomerServiceService } from './service/customer-service.service';
 import { Constant } from './constant';
 import { count } from 'rxjs/operators';
 import { SharedServiceService } from './service/shared-service.service';
+import { CartSrviceService } from './service/cart-srvice.service';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +52,7 @@ export class AppComponent implements OnInit {
   public sessionInfo : String = "";
   public loginDetail : any = null;
   public count: number = 0 ;
+  public cart:any =[];
  
   /*;
   *On initialization this function is called
@@ -58,6 +60,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getMenu();
     this.autoLogin();
+    this.getCart();
 
     this.sharedService.sharedMessage.subscribe(myCartCount=> this.count= myCartCount)
   }
@@ -68,7 +71,7 @@ export class AppComponent implements OnInit {
   * Storing the information to the local storage
   * We get the information in the form of JSON and converting it into srting.
   */
-  constructor(private categoryService:CategoryService,private sharedService: SharedServiceService, private cstSrv: CustomerServiceService, private productListSrv:ProductListService,
+  constructor(private cartSrv:CartSrviceService,private categoryService:CategoryService,private sharedService: SharedServiceService, private cstSrv: CustomerServiceService, private productListSrv:ProductListService,
     private _router:Router){
      let sessionInfoStr = localStorage.getItem(Constant.sessionKey); // get the information from local storage. If this is new user, then sessionInfoStr is null
     //  this.count =  this.sharedService.myCartCount;
@@ -99,6 +102,39 @@ export class AppComponent implements OnInit {
     return token;
   }
 
+  getCart() {
+    let param:any= {};  
+    let str = localStorage.getItem(Constant.sessionKey);
+    if (str != null) {
+      this.sessionInfo  = str ;
+      param['sessionid'] = this.sessionInfo ;
+    }
+    if (this.loginDetail != null) {
+      if (this.loginDetail.CustomerID == undefined) {
+        param['customerid'] = -1;
+      } else {
+        console.log("aditya");
+        param['customerid'] =  this.loginDetail.CustomerID;
+      }
+    } 
+    this.cartSrv.getCart(param).subscribe(
+      data => {
+        console.log(data);
+        this.cart = data.items ;
+        console.log(this.cart);
+        this. myCartCountMethod();
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+
+  }
+
+  myCartCountMethod() {
+    this.sharedService.myCartCountMethod(this.cart.length);
+  }
+
   /*
   * This function returns the categories and sub-categories
   */
@@ -119,6 +155,11 @@ export class AppComponent implements OnInit {
   */
   onClickHome() {
     this._router.navigateByUrl("/landing");
+  }
+
+  myOrder() {
+    this._router.navigateByUrl("/orderlist");
+
   }
 
   /*

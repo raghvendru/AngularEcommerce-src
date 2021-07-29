@@ -3,7 +3,7 @@
         <h2>Order Confirmation</h2>
     </div>
     <div class="d-flex">
-      <form action="" method="">
+      <form action="" method="" >
       <label>
         <span class="fname">Name <span class="required">*</span></span>
         <input type="text" name="fname" [(ngModel)] = "customerDetail.Name" >
@@ -43,17 +43,17 @@
           <input type="text" name="total" value = "{{getTotal()}}"> 
         </label>
         <div>
-          <input type="radio" name="dbt" value="Direct Bank Transfer" [checked]="true" [(ngModel)]="paymentType" > Direct Bank Transfer
+          <input type="radio" name="dbt" value="Direct Bank Transfer" [checked]="true" [(ngModel)]="paymentType" required="required" > Direct Bank Transfer
         </div>
         <div>
-          <input type="radio" name="dbt" value="Cash on Delivery" [checked]="true" [(ngModel)]="paymentType"  > Cash on Delivery
+          <input type="radio" name="dbt" value="Cash on Delivery" [checked]="true" [(ngModel)]="paymentType" required="required"  > Cash on Delivery
         </div>
         <div>
-          <input type="radio" name="dbt" value="Gpay" [checked]="true" [(ngModel)]="paymentType" > Gpay <span>
+          <input type="radio" name="dbt" value="Gpay" [checked]="true" [(ngModel)]="paymentType" required> Gpay <span>
           <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
           </span>
         </div>
-        <button type="button" (click) = "onClickPlace()" style="background-color: rgb(68, 51, 51);width:auto" >Place Order</button>
+        <button type="button" (click) = "onClickPlace()" style="background-color: rgb(68, 51, 51);width:auto" aria-required="required" >Place Order</button>
       </div>
     </form> 
   </div>

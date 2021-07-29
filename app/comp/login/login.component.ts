@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   
   
   onClick(){
-    this.getCustDetails();    
+    this.getCustDetails();  
   }
 
   /* by calling the service we fetch the data of the customer*/
